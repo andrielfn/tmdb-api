@@ -41,7 +41,7 @@ module TMDb
     # Get the alternative titles for a specific movie ID.
     #
     # options - The hash options used to filter the search (default: {}):
-    #           :country - Titles for a specific country
+    #           :country - Titles for a specific country (ISO 3166-1 code).
     #
     # Examples
     #
@@ -55,6 +55,29 @@ module TMDb
 
       if result.success?
         result['titles']
+      else
+        raise result.response
+      end
+    end
+
+
+    # Get the images (posters and backdrops) for a specific movie id.
+    #
+    # options - The hash options used to filter the search (default: {}):
+    #           :language - Images of a specific language (ISO 639-1 code).
+    #
+    # Examples
+    #
+    # TMDb::Movie.find(598).images
+    #
+    # movie = TMDb::Movie.find(598)
+    # movie.images(language: 'pt')
+    #
+    def images(options = {})
+      result = Fetch.get("/movie/#{id}/images", options)
+
+      if result.success?
+        result
       else
         raise result.response
       end
