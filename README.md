@@ -22,6 +22,13 @@ Or install it yourself as:
 
 ## Usage
 
+### API Key
+First of all, you need set your API Key provided by TMDb.
+
+```ruby
+TMDb.api_key = '56565958363476674e5e63643c787867'
+```
+
 ### Find a movie by ID
 You can find a movie by your ID from The Movie Database.
 
@@ -47,6 +54,27 @@ TMDb::Movie.search('wall e', year: 2003)
 ```
 You can filter the serch with the following options: _page_, _language_,
 _include_adult_, and _year_.
+
+### Find alternative titles
+A specific movie may have a lot of alternativies movies. You can fetch just calling
+the _alternative_titles_ method.
+```ruby
+movie = TMDB::Movie.find(598)
+
+movie.alternative_titles
+# => [{"iso_3166_1"=>"RU", "title"=>"Город бога"},
+# {"iso_3166_1"=>"IT", "title"=>"City of God - La città di Dio"},
+# {"iso_3166_1"=>"BR", "title"=>"Cidade de Deus"},
+# {"iso_3166_1"=>"FR", "title"=>"La cité de Dieu"},
+# {"iso_3166_1"=>"DE", "title"=>"City of God"},
+# {"iso_3166_1"=>"CN", "title"=>"上帝之城"},
+# {"iso_3166_1"=>"HK", "title"=>"无主之城"},
+# {"iso_3166_1"=>"US", "title"=>"City of God"},
+# {"iso_3166_1"=>"TW", "title"=>"無法無天"}]
+
+movie.alternative_titles(country: 'br')
+# => [{"iso_3166_1"=>"BR", "title"=>"Cidade de Deus"}]
+```
 
 ### Movie object
 

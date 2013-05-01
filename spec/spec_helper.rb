@@ -2,8 +2,10 @@ require 'tmdb'
 require 'rspec'
 require 'webmock/rspec'
 
+# Load all support files
 Dir[File.dirname(__FILE__) + "/support/**/*.rb"].each {|r| require r}
 
+# Fake API Key
 TMDb.api_key = '56565958363476674e5e63643c787867'
 
 RSpec.configure do |config|

@@ -27,11 +27,34 @@ module TMDb
     # TMDb::Movie.find(24)
     #
     # TMDb::Movie.find(32123, language: 'pt')
+    #
     def self.find(id, options = {})
       result = Fetch.get("/movie/#{id}", options)
 
       if result.success?
         new result
+      else
+        raise result.response
+      end
+    end
+
+    # Get the alternative titles for a specific movie ID.
+    #
+    # options - The hash options used to filter the search (default: {}):
+    #           :country - Titles for a specific country
+    #
+    # Examples
+    #
+    # TMDb::Movie.find(598).alternative_titles
+    #
+    # movie = TMDb::Movie.find(598)
+    # movie.alternative_titles(country: 'br')
+    #
+    def alternative_titles(options = {})
+      result = Fetch.get("/movie/#{id}/alternative_titles", options)
+
+      if result.success?
+        result['titles']
       else
         raise result.response
       end
