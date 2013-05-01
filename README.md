@@ -29,8 +29,8 @@ First of all, you need set your API Key provided by TMDb.
 TMDb.api_key = '56565958363476674e5e63643c787867'
 ```
 
-### Find a movie by ID
-You can find a movie by your ID from The Movie Database.
+### Find a movie
+Get the basic movie information for a specific movie ID.
 
 ```ruby
 TMDB::Movie.find(24)
@@ -40,8 +40,8 @@ TMDB::Movie.find(603, language: 'pt')
 # => #<TMDb::Movie:0x007f99 @id=603, @title="The Matrix", @imdb_id="tt0133093" ... >
 ```
 
-### Find a movie by name
-Also, you can find movies by matching your name.
+### Search movie
+Search for movies by title.
 
 ```ruby
 TMDb::Movie.search('Forrest')
@@ -55,9 +55,9 @@ TMDb::Movie.search('wall e', year: 2003)
 You can filter the serch with the following options: _page_, _language_,
 _include_adult_, and _year_.
 
-### Find alternative titles
-A specific movie may have a lot of alternativies movies. You can fetch just calling
-the _alternative_titles_ method.
+### Alternative titles
+Get the alternative titles for a specific movie ID.
+
 ```ruby
 movie = TMDB::Movie.find(598)
 
@@ -74,6 +74,39 @@ movie.alternative_titles
 
 movie.alternative_titles(country: 'br')
 # => [{"iso_3166_1"=>"BR", "title"=>"Cidade de Deus"}]
+```
+
+### Images
+Get the images (posters and backdrops) for a specific movie ID.
+
+```ruby
+TMDb::Movie.find(598).images
+# => {"id"=>598,
+#     "backdrops"=> [
+#       {
+#         "file_path"=>"/hSaH9tt67bozo9K50sbH0s4YjEc.jpg",
+#         "width"=>1532,
+#         "height"=>862,
+#         "iso_639_1"=>nil,
+#         "aspect_ratio"=>1.78,
+#        "vote_average"=>5.4421768707483,
+#         "vote_count"=>7
+#       },
+#       {
+#         "file_path"=>"/k4BAPrE5WkNLvpsPsiMfu8W4Zyi.jpg",
+#         "width"=>1920,
+#         "height"=>1080,
+#         "iso_639_1"=>nil,
+#         "aspect_ratio"=>1.78,
+#         "vote_average"=>5.399159663865546,
+#         "vote_count"=>5
+#       },
+#       {
+#         ...
+#       }
+#     ]}
+
+TMDb::Movie.find(598).images(language: 'pt')
 ```
 
 ### Movie object
