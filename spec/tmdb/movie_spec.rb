@@ -82,23 +82,27 @@ describe TMDb::Movie do
       expect(movies.first.vote_average).to eq(0)
       expect(movies.first.vote_count).to eq(0)
     end
+
+    it "returns an empty array when no movies found" do
+      stub_get('/search/movie').with(query: { query: 'Inexistent Movie' })
+        .to_return(json_response('no_results.json'))
+
+      movies = TMDb::Movie.search('Inexistent Movie')
+
+      expect(movies).to match_array([])
+    end
   end
 
   describe ".find" do
     it "find a movie given your ID" do
-      stub_get('/movie/550').to_return(json_response('find_movie_by_id.json'))
+      stub_get('/movie/24').to_return(json_response('find_movie_by_id.json'))
 
-      movie = TMDb::Movie.find(550)
+      movie = TMDb::Movie.find(24)
 
       expect(movie.adult).to eq(false)
-      expect(movie.backdrop_path).to eq("/kkS8PKa8c134vXsj2fQkNqOaCXU.jpg")
-      expect(movie.belongs_to_collection).to eq({
-        "id" => 2883,
-        "name" => "Kill Bill Collection",
-        "poster_path" => "/tf1nUtw3LJGUGv1EFFi23iz6ngr.jpg",
-        "backdrop_path" => "/oCLKNACMNrEf4T1EP6BpMXDl5m1.jpg"
-      })
-      expect(movie.budget).to eq(55000000)
+      expect(movie.backdrop_path).to eq("/hSaH9tt67bozo9K50sbH0s4YjEc.jpg")
+      expect(movie.belongs_to_collection).to eq(nil)
+      expect(movie.budget).to eq(3300000)
       expect(movie.genres).to eq([
         {
           "id" => 28,
@@ -109,55 +113,80 @@ describe TMDb::Movie do
           "name" => "Crime"
         },
         {
-          "id" => 53,
-          "name" => "Thriller"
-        }
-      ])
-      expect(movie.homepage).to eq('')
-      expect(movie.id).to eq(24)
-      expect(movie.imdb_id).to eq('tt0266697')
-      expect(movie.original_title).to eq("Kill Bill: Vol. 1")
-      expect(movie.overview).to eq("An assassin is shot at the altar by her ruthless employer, Bill, and other members of their assassination circle. But The Bride lives to plot her vengeance. Setting out for some payback, she makes a death list and hunts down those who wronged her, saving Bill for last.")
-      expect(movie.popularity).to eq(3.61585920538299)
-      expect(movie.poster_path).to eq("/9O50TVszkz0dcP5g6Ej33UhR7vw.jpg")
-      expect(movie.production_companies).to eq([
-        {
-          "name" => "Miramax Films",
-          "id" => 14
+          "id" => 18,
+          "name" => "Drama"
         },
         {
-          "name" => "A Band Apart",
-          "id" => 59
+          "id" => 10769,
+          "name" => "Foreign"
+        }
+      ])
+      expect(movie.homepage).to eq('http://cidadededeus.globo.com/')
+      expect(movie.id).to eq(598)
+      expect(movie.imdb_id).to eq('tt0317248')
+      expect(movie.original_title).to eq("Cidade de Deus")
+      expect(movie.overview).to eq("City of God depicts the raw violence in the ghettos of Rio de Janeiro. In the 1970’s that kids are carrying guns and joining gangs when they should be playing hide-and-seek.")
+      expect(movie.popularity).to eq(1.3497251049225558)
+      expect(movie.poster_path).to eq("/mwDnSQR1CkxuDjSKfgiNT0sIOjM.jpg")
+      expect(movie.production_companies).to eq([
+        {
+          "name" => "O2 Filmes",
+          "id" => 345
+        },
+        {
+          "name" => "VideoFilmes",
+          "id" => 346
+        },
+        {
+          "name" => "Globo filmes",
+          "id" => 10954
+        },
+        {
+          "name" => "Lumiere",
+          "id" => 11444
+        },
+        {
+          "name" => "Wild Bunch",
+          "id" => 856
+        },
+        {
+          "name" => "Hank Levine Film",
+          "id" => 11445
+        },
+        {
+          "name" => "Lereby Productions",
+          "id" => 11446
         }
       ])
       expect(movie.production_countries).to eq([
         {
-          "iso_3166_1" => "JP",
-          "name" => "Japan"
+          "iso_3166_1" => "BR",
+          "name" => "Brazil"
         },
         {
-          "iso_3166_1" => "US",
-          "name" => "United States of America"
+          "iso_3166_1" => "FR",
+          "name" => "France"
         }
       ])
-      expect(movie.release_date).to eq("2003-10-09")
-      expect(movie.revenue).to eq(180949000)
-      expect(movie.runtime).to eq(111)
+      expect(movie.release_date).to eq("2002-08-31")
+      expect(movie.revenue).to eq(27387381)
+      expect(movie.runtime).to eq(130)
       expect(movie.spoken_languages).to eq([
         {
-          "iso_639_1" => "en",
-          "name" => "English"
+          "iso_639_1" => "pt",
+          "name" => "Português"
         }
       ])
       expect(movie.status).to eq("Released")
-      expect(movie.tagline).to eq("Go for the kill.")
-      expect(movie.title).to eq("Kill Bill: Vol. 1")
-      expect(movie.vote_average).to eq(7.6)
-      expect(movie.vote_count).to eq(92)
+      expect(movie.tagline).to eq("If you run you're dead...if you stay, you're dead again. Period.")
+      expect(movie.title).to eq("City of God")
+      expect(movie.vote_average).to eq(8.2)
+      expect(movie.vote_count).to eq(52)
     end
 
     it "find a movie given your ID and language" do
-      stub_get('/movie/550').with(query: { language: 'pt' }).to_return(json_response('find_movie_by_id_and_language.json'))
+      stub_get('/movie/550').with(query: { language: 'pt' })
+        .to_return(json_response('find_movie_by_id_and_language.json'))
 
       movie = TMDb::Movie.find(550, language: 'pt')
 
@@ -225,6 +254,70 @@ describe TMDb::Movie do
       expect(movie.title).to eq("Kill Bill - Volume 1")
       expect(movie.vote_average).to eq(7.6)
       expect(movie.vote_count).to eq(92)
+    end
+  end
+
+  describe "#alternative_titles" do
+    it "returns the alternative titles for a specific movie" do
+      stub_get('/movie/598').to_return(json_response('find_movie_by_id.json'))
+      stub_get('/movie/598/alternative_titles')
+        .to_return(json_response('alternative_titles.json'))
+
+      alternative_titles = TMDb::Movie.find(598).alternative_titles
+
+      expect(alternative_titles).to match_array([
+        {
+          "iso_3166_1" => "RU",
+          "title" => "Город бога"
+        },
+        {
+          "iso_3166_1" => "IT",
+          "title" => "City of God - La città di Dio"
+        },
+        {
+          "iso_3166_1" => "BR",
+          "title" => "Cidade de Deus"
+        },
+        {
+          "iso_3166_1" => "FR",
+          "title" => "La cité de Dieu"
+        },
+        {
+          "iso_3166_1" => "DE",
+          "title" => "City of God"
+        },
+        {
+          "iso_3166_1" => "CN",
+          "title" => "上帝之城"
+        },
+        {
+          "iso_3166_1" => "HK",
+          "title" => "无主之城"
+        },
+        {
+          "iso_3166_1" => "US",
+          "title" => "City of God"
+        },
+        {
+          "iso_3166_1" => "TW",
+          "title" => "無法無天"
+        }
+      ])
+    end
+
+    it "returns the alternative titles for a specific movie and a specific country" do
+      stub_get('/movie/598').to_return(json_response('find_movie_by_id.json'))
+      stub_get('/movie/598/alternative_titles').with(query: { country: 'br' })
+        .to_return(json_response('alternative_titles_by_country.json'))
+
+      alternative_titles = TMDb::Movie.find(598).alternative_titles(country: 'br')
+
+      expect(alternative_titles).to match_array([
+        {
+          "iso_3166_1" => "BR",
+          "title" => "Cidade de Deus"
+        }
+      ])
     end
   end
 end

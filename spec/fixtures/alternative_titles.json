@@ -1,0 +1,41 @@
+{
+  "id": 598,
+  "titles": [
+    {
+      "iso_3166_1": "RU",
+      "title": "Город бога"
+    },
+    {
+      "iso_3166_1": "IT",
+      "title": "City of God - La città di Dio"
+    },
+    {
+      "iso_3166_1": "BR",
+      "title": "Cidade de Deus"
+    },
+    {
+      "iso_3166_1": "FR",
+      "title": "La cité de Dieu"
+    },
+    {
+      "iso_3166_1": "DE",
+      "title": "City of God"
+    },
+    {
+      "iso_3166_1": "CN",
+      "title": "上帝之城"
+    },
+    {
+      "iso_3166_1": "HK",
+      "title": "无主之城"
+    },
+    {
+      "iso_3166_1": "US",
+      "title": "City of God"
+    },
+    {
+      "iso_3166_1": "TW",
+      "title": "無法無天"
+    }
+  ]
+}
