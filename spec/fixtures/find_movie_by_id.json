@@ -1,0 +1,66 @@
+{
+  "adult": false,
+  "backdrop_path": "/kkS8PKa8c134vXsj2fQkNqOaCXU.jpg",
+  "belongs_to_collection": {
+    "id": 2883,
+    "name": "Kill Bill Collection",
+    "poster_path": "/tf1nUtw3LJGUGv1EFFi23iz6ngr.jpg",
+    "backdrop_path": "/oCLKNACMNrEf4T1EP6BpMXDl5m1.jpg"
+  },
+  "budget": 55000000,
+  "genres": [
+    {
+      "id": 28,
+      "name": "Action"
+    },
+    {
+      "id": 80,
+      "name": "Crime"
+    },
+    {
+      "id": 53,
+      "name": "Thriller"
+    }
+  ],
+  "homepage": "",
+  "id": 24,
+  "imdb_id": "tt0266697",
+  "original_title": "Kill Bill: Vol. 1",
+  "overview": "An assassin is shot at the altar by her ruthless employer, Bill, and other members of their assassination circle. But The Bride lives to plot her vengeance. Setting out for some payback, she makes a death list and hunts down those who wronged her, saving Bill for last.",
+  "popularity": 3.61585920538299,
+  "poster_path": "/9O50TVszkz0dcP5g6Ej33UhR7vw.jpg",
+  "production_companies": [
+    {
+      "name": "Miramax Films",
+      "id": 14
+    },
+    {
+      "name": "A Band Apart",
+      "id": 59
+    }
+  ],
+  "production_countries": [
+    {
+      "iso_3166_1": "JP",
+      "name": "Japan"
+    },
+    {
+      "iso_3166_1": "US",
+      "name": "United States of America"
+    }
+  ],
+  "release_date": "2003-10-09",
+  "revenue": 180949000,
+  "runtime": 111,
+  "spoken_languages": [
+    {
+      "iso_639_1": "en",
+      "name": "English"
+    }
+  ],
+  "status": "Released",
+  "tagline": "Go for the kill.",
+  "title": "Kill Bill: Vol. 1",
+  "vote_average": 7.6,
+  "vote_count": 92
+}

@@ -1,0 +1,66 @@
+{
+  "adult": false,
+  "backdrop_path": "/kkS8PKa8c134vXsj2fQkNqOaCXU.jpg",
+  "belongs_to_collection": {
+    "id": 2883,
+    "name": "Kill Bill Collection",
+    "poster_path": "/tf1nUtw3LJGUGv1EFFi23iz6ngr.jpg",
+    "backdrop_path": "/oCLKNACMNrEf4T1EP6BpMXDl5m1.jpg"
+  },
+  "budget": 55000000,
+  "genres": [
+    {
+      "id": 28,
+      "name": "Ação"
+    },
+    {
+      "id": 80,
+      "name": "Crime"
+    },
+    {
+      "id": 53,
+      "name": "Thriller"
+    }
+  ],
+  "homepage": "",
+  "id": 24,
+  "imdb_id": "tt0266697",
+  "original_title": "Kill Bill: Vol. 1",
+  "overview": "Kill Bill presta uma grande homenagem aos filmes de Kung-fu das décadas de 60 e 70, seus atores e estilos. Dirigido com exímia presteza, a obra foi delicadamente produzida o que dá ao expectador um deleite frente às diversas mudanças de sensibilidade do filme, cenas em preto e branco, seqüências, sombras, ângulos de câmera e intertextualidade com outras mídias como o trecho do filme feito em anime e a sensacional trilha sonora que se tornou um dos deliciosos hábitos viciantes dos filmes de Tarantino. O primeiro volume do filme narra o início da vingança da ex-assassina Black Mamba (cujo nome real só nos é revelado ao final do segundo filme). Ao acordar do coma, Black Mamba percebe que foi a única sobrevivente do extermínio ocorrido no dia de seu casamento e que levara as vidas de todos a quem amava, inclusive do filho que levava no ventre. Ela começa então uma caçada impiedosa aos assassinos, seus ex-companheiros do esquadrão de assassinato Deadly Viper.",
+  "popularity": 2.884757761614897,
+  "poster_path": "/viscNSLi1rDyMuTytUojf0G2DIy.jpg",
+  "production_companies": [
+    {
+      "name": "Miramax Films",
+      "id": 14
+    },
+    {
+      "name": "A Band Apart",
+      "id": 59
+    }
+  ],
+  "production_countries": [
+    {
+      "iso_3166_1": "JP",
+      "name": "Japan"
+    },
+    {
+      "iso_3166_1": "US",
+      "name": "United States of America"
+    }
+  ],
+  "release_date": "2003-10-09",
+  "revenue": 180949000,
+  "runtime": 111,
+  "spoken_languages": [
+    {
+      "iso_639_1": "en",
+      "name": "English"
+    }
+  ],
+  "status": "Released",
+  "tagline": "",
+  "title": "Kill Bill - Volume 1",
+  "vote_average": 7.6,
+  "vote_count": 92
+}
