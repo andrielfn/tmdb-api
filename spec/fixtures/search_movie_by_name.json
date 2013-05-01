@@ -1,0 +1,91 @@
+{
+  "page": 1,
+  "results": [
+    {
+      "adult": false,
+      "backdrop_path": "/pIUvQ9Ed35wlWhY2oU6OmwEsmzG.jpg",
+      "id": 120,
+      "original_title": "The Lord of the Rings: The Fellowship of the Ring",
+      "release_date": "2001-12-19",
+      "poster_path": "/9HG6pINW1KoFTAKY3LdybkoOKAm.jpg",
+      "popularity": 10.895025450078979,
+      "title": "The Lord of the Rings: The Fellowship of the Ring",
+      "vote_average": 8.3,
+      "vote_count": 187
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/8BPZO0Bf8TeAy8znF43z8soK3ys.jpg",
+      "id": 122,
+      "original_title": "The Lord of the Rings: The Return of the King",
+      "release_date": "2003-12-17",
+      "poster_path": "/j6NCjU6Zh7SkfIeN5zDaoTmBn4m.jpg",
+      "popularity": 8.403090140296683,
+      "title": "The Lord of the Rings: The Return of the King",
+      "vote_average": 8.5,
+      "vote_count": 214
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/dG4BmM32XJmKiwopLDQmvXEhuHB.jpg",
+      "id": 121,
+      "original_title": "The Lord of the Rings: The Two Towers",
+      "release_date": "2002-12-18",
+      "poster_path": "/9mBjBuUmBBgnGjV1JZ2uCIYbaph.jpg",
+      "popularity": 6.195790484527006,
+      "title": "The Lord of the Rings: The Two Towers",
+      "vote_average": 8.5,
+      "vote_count": 160
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/waZyrTHpdufOXfR7feXdYHSFke8.jpg",
+      "id": 123,
+      "original_title": "The Lord of the Rings",
+      "release_date": "1978-11-15",
+      "poster_path": "/3DsGYPcvKQ9MAfgi70MVEorB8kN.jpg",
+      "popularity": 0.8274961462741193,
+      "title": "The Lord of the Rings",
+      "vote_average": 6,
+      "vote_count": 7
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/FeMrIxUO2G2tB6JXY6kjgTbXho.jpg",
+      "id": 17632,
+      "original_title": "The Hunt for Gollum",
+      "release_date": "2009-05-04",
+      "poster_path": "/t1oWnjAm80QW0YFeSk5BbFlgkuS.jpg",
+      "popularity": 0.6196126421351771,
+      "title": "The Hunt for Gollum",
+      "vote_average": 7.2,
+      "vote_count": 5
+    },
+    {
+      "adult": false,
+      "backdrop_path": null,
+      "id": 71506,
+      "original_title": "Ringers - Lord of the Fans",
+      "release_date": "2005-01-21",
+      "poster_path": "/nZ1uvAMiX5Hxiq0ZxRzc2NhFOQY.jpg",
+      "popularity": 0.4222676000000001,
+      "title": "Ringers - Lord of the Fans",
+      "vote_average": 3,
+      "vote_count": 1
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/9kw9LqyNmgru8qFEoTZE9towoiU.jpg",
+      "id": 155586,
+      "original_title": "Creating the Lord of the Rings Symphony: A Composer's Journey Through Middle-Earth",
+      "release_date": null,
+      "poster_path": "/uIXyk22hfxrwXrOX8RdhovvNJHn.jpg",
+      "popularity": 0.2,
+      "title": "Creating the Lord of the Rings Symphony: A Composer's Journey Through Middle-Earth",
+      "vote_average": 0,
+      "vote_count": 0
+    }
+  ],
+  "total_pages": 1,
+  "total_results": 7
+}
