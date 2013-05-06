@@ -21,7 +21,7 @@ module TMDb
     def search(query, options = {})
       # require "pry"; binding.pry
       options.merge!(query: query)
-      result = Fetch.get("/search/#{resource}", options)
+      result = Fetcher::get("/search/#{resource}", options)
       result['results'].map { |attributes| new(attributes) }
     end
 

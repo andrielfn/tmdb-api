@@ -29,7 +29,7 @@ module TMDb
     # TMDb::Movie.find(32123, language: 'pt')
     #
     def self.find(id, options = {})
-      result = Fetch.get("/movie/#{id}", options)
+      result = Fetcher::get("/movie/#{id}", options)
 
       if result.success?
         new result
@@ -51,7 +51,7 @@ module TMDb
     # movie.alternative_titles(country: 'br')
     #
     def alternative_titles(options = {})
-      result = Fetch.get("/movie/#{id}/alternative_titles", options)
+      result = Fetcher::get("/movie/#{id}/alternative_titles", options)
 
       if result.success?
         result['titles']
@@ -74,7 +74,7 @@ module TMDb
     # movie.images(language: 'pt')
     #
     def images(options = {})
-      result = Fetch.get("/movie/#{id}/images", options)
+      result = Fetcher::get("/movie/#{id}/images", options)
 
       if result.success?
         result
