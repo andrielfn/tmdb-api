@@ -1,6 +1,6 @@
 require "httparty"
 
-require "tmdb/fetch"
+require "tmdb/fetcher"
 require "tmdb/searchable"
 require "tmdb/movie"
 require "tmdb/version"
