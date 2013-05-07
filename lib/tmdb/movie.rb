@@ -64,5 +64,21 @@ module TMDb
     def images(options = {})
       Fetcher::get("/movie/#{id}/images", options)
     end
+
+    # Get the plot keywords for a specific movie id.
+    #
+    # options - The hash options used to filter the search (default: {}):
+    #           :language - Images of a specific language (ISO 639-1 code).
+    #
+    # Examples
+    #
+    # TMDb::Movie.find(331).keywords
+    #
+    # movie = TMDb.find(331).keywords(language: pt)
+    #
+    def keywords(options = {})
+      result = Fetcher::get("/movie/#{id}/keywords", options)
+      result['keywords']
+    end
   end
 end
