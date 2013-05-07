@@ -17,12 +17,14 @@ module TMDb
       if result.success?
         result
       else
-        raise JSON.parse(result.response.body)['status_message']
+        raise ArgumentError, JSON.parse(result.response.body)['status_message']
       end
     end
 
     def self.verify_api!
-      raise APIKeyNotSet if TMDb.api_key.nil?
+      if TMDb.api_key.nil? || TMDb.api_key.empty?
+        raise ArgumentError, 'TMDb.api_key must be set before using the API'
+      end
     end
   end
 end

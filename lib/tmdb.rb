@@ -1,4 +1,5 @@
 require "httparty"
+require "json"
 
 require "tmdb/fetcher"
 require "tmdb/searchable"
