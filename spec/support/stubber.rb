@@ -1,5 +1,5 @@
-def stub_get(url, options = {})
-  stub_request(:get, tmdb_url(url))
+def stub_get(url, options = {}, key = true)
+  stub_request(:get, tmdb_url(url, key))
 end
 
 # Retuns absolute path of fixtures directory.
@@ -13,16 +13,21 @@ def fixture(file)
 end
 
 # Set the stub return to be JSON.
-def json_response(file)
-  {
+def json_response(file, status = 200)
+  options = {
     :body => fixture(file),
     :headers => {
       :content_type => 'application/json; charset=utf-8'
-    }
+    },
+    :status => status
   }
 end
 
 # Returns the entire URL of TMDb API.
-def tmdb_url(url)
-  "http://api.themoviedb.org/3#{url}?api_key=#{TMDb.api_key}"
+def tmdb_url(url, key)
+  if key
+    "http://api.themoviedb.org/3#{url}?api_key=#{TMDb.api_key}"
+  else
+    "http://api.themoviedb.org/3#{url}?api_key="
+  end
 end

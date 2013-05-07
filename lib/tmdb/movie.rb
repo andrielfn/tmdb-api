@@ -29,13 +29,7 @@ module TMDb
     # TMDb::Movie.find(32123, language: 'pt')
     #
     def self.find(id, options = {})
-      result = Fetcher::get("/movie/#{id}", options)
-
-      if result.success?
-        new result
-      else
-        raise result.response
-      end
+      new Fetcher::get("/movie/#{id}", options)
     end
 
     # Get the alternative titles for a specific movie ID.
@@ -52,14 +46,8 @@ module TMDb
     #
     def alternative_titles(options = {})
       result = Fetcher::get("/movie/#{id}/alternative_titles", options)
-
-      if result.success?
-        result['titles']
-      else
-        raise result.response
-      end
+      result['titles']
     end
-
 
     # Get the images (posters and backdrops) for a specific movie id.
     #
@@ -74,13 +62,7 @@ module TMDb
     # movie.images(language: 'pt')
     #
     def images(options = {})
-      result = Fetcher::get("/movie/#{id}/images", options)
-
-      if result.success?
-        result
-      else
-        raise result.response
-      end
+      Fetcher::get("/movie/#{id}/images", options)
     end
   end
 end

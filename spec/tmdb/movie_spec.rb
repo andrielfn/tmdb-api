@@ -255,6 +255,11 @@ describe TMDb::Movie do
       expect(movie.vote_average).to eq(7.6)
       expect(movie.vote_count).to eq(92)
     end
+
+    it 'raises error with id not found' do
+      stub_get('/movie/1234').to_return(json_response('invalid_id.json', 404))
+      expect { TMDb::Movie.find(1234) }.to raise_error(ArgumentError)
+    end
   end
 
   describe "#alternative_titles" do
