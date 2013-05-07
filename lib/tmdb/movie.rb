@@ -80,5 +80,16 @@ module TMDb
       result = Fetcher::get("/movie/#{id}/keywords", options)
       result['keywords']
     end
+
+    # Get the release date by country for a specific movie id.
+    #
+    # Examples
+    #
+    # TMDb::Movie.find(8711).releases
+    #
+    def releases
+      result = Fetcher::get("/movie/#{id}/releases")
+      result['countries']
+    end
   end
 end
