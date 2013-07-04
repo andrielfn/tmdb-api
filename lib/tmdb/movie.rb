@@ -15,7 +15,6 @@ module TMDb
       ATTRIBUTES.each { |attr| instance_variable_set("@#{attr}", attrs[attr.to_s]) }
     end
 
-
     # Get the basic movie information for a specific movie ID.
     #
     # id - Movie ID.
@@ -39,12 +38,9 @@ module TMDb
     #
     # Examples
     #
-    # TMDb::Movie.find(598).alternative_titles
+    # TMDb::Movie.alternative_titles(598, country: 'br')
     #
-    # movie = TMDb::Movie.find(598)
-    # movie.alternative_titles(country: 'br')
-    #
-    def alternative_titles(options = {})
+    def self.alternative_titles(id, options = {})
       result = Fetcher::get("/movie/#{id}/alternative_titles", options)
       result['titles']
     end
@@ -58,10 +54,9 @@ module TMDb
     #
     # TMDb::Movie.find(598).images
     #
-    # movie = TMDb::Movie.find(598)
-    # movie.images(language: 'pt')
+    # movie = TMDb::Movie.images(598, language: 'pt')
     #
-    def images(options = {})
+    def self.images(id, options = {})
       Fetcher::get("/movie/#{id}/images", options)
     end
 
@@ -72,11 +67,9 @@ module TMDb
     #
     # Examples
     #
-    # TMDb::Movie.find(331).keywords
+    # TMDb::Movie.keywords(331, language: pt)
     #
-    # movie = TMDb.find(331).keywords(language: pt)
-    #
-    def keywords(options = {})
+    def self.keywords(id, options = {})
       result = Fetcher::get("/movie/#{id}/keywords", options)
       result['keywords']
     end
@@ -85,9 +78,9 @@ module TMDb
     #
     # Examples
     #
-    # TMDb::Movie.find(8711).releases
+    # TMDb::Movie.releases(8711)
     #
-    def releases
+    def self.releases(id)
       result = Fetcher::get("/movie/#{id}/releases")
       result['countries']
     end

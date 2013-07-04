@@ -268,7 +268,7 @@ describe TMDb::Movie do
       stub_get('/movie/598/alternative_titles')
         .to_return(json_response('alternative_titles.json'))
 
-      alternative_titles = TMDb::Movie.find(598).alternative_titles
+      alternative_titles = TMDb::Movie.alternative_titles(598)
 
       expect(alternative_titles).to match_array([
         {
@@ -315,7 +315,7 @@ describe TMDb::Movie do
       stub_get('/movie/598/alternative_titles').with(query: { country: 'br' })
         .to_return(json_response('alternative_titles_by_country.json'))
 
-      alternative_titles = TMDb::Movie.find(598).alternative_titles(country: 'br')
+      alternative_titles = TMDb::Movie.alternative_titles(598, country: 'br')
 
       expect(alternative_titles).to match_array([
         {
@@ -332,7 +332,7 @@ describe TMDb::Movie do
       stub_get('/movie/598/images')
         .to_return(json_response('movie_images.json'))
 
-      images = TMDb::Movie.find(598).images
+      images = TMDb::Movie.images(598)
 
       expect(images['backdrops']).to have(7).items
       expect(images['posters']).to have(16).items
@@ -367,7 +367,7 @@ describe TMDb::Movie do
       stub_get('/movie/598/images')
         .to_return(json_response('movie_images_by_language.json'))
 
-      images = TMDb::Movie.find(598).images
+      images = TMDb::Movie.images(598)
 
       expect(images['backdrops']).to have(0).items
       expect(images['posters']).to have(4).items
@@ -391,7 +391,7 @@ describe TMDb::Movie do
       stub_get('/movie/598').to_return(json_response('find_movie_by_id.json'))
       stub_get('/movie/598/keywords').to_return(json_response('movie_keywords.json'))
 
-      keywords = TMDb::Movie.find(598).keywords
+      keywords = TMDb::Movie.keywords(598)
 
       expect(keywords).to have(7).items
 
@@ -433,7 +433,7 @@ describe TMDb::Movie do
       stub_get('/movie/598').to_return(json_response('find_movie_by_id.json'))
       stub_get('/movie/598/releases').to_return(json_response('movie_releases.json'))
 
-      releases = TMDb::Movie.find(598).releases
+      releases = TMDb::Movie.releases(598)
 
       expect(releases).to have(6).items
 
