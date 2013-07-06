@@ -84,5 +84,22 @@ module TMDb
       result = Fetcher::get("/movie/#{id}/releases")
       result['countries']
     end
+
+    # Get the list of upcoming movies. This list refreshes every day.
+    # The maximum number of items this list will include is 100.
+    #
+    # options - The hash options used to filter the search (default: {}):
+    #           :page - Page.
+    #           :language - Images of a specific language (ISO 639-1 code).
+    #
+    # Examples
+    #
+    # TMDb::Movie.upcoming
+    # TMDb::Movie.upcoming(page: 3, language: 'pt')
+    #
+    def self.upcoming(options = {})
+      response = Fetcher::get('/movie/upcoming', options)
+      response['results'].map { |movie| new(movie) }
+    end
   end
 end
