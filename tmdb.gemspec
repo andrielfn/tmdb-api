@@ -7,7 +7,7 @@ Gem::Specification.new do |spec|
   spec.name          = "tmdb-api"
   spec.version       = TMDb::VERSION
   spec.authors       = ["Andriel Nuernberg"]
-  spec.email         = ["andriel.nuernberg@plataformatec.com.br"]
+  spec.email         = ["andrielfn@gmail.com"]
   spec.description   = "The Movie Database API"
   spec.summary       = "The Mobie Database API"
   spec.homepage      = ""
