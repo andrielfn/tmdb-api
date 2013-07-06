@@ -4,6 +4,7 @@ require "json"
 require "tmdb/fetcher"
 require "tmdb/searchable"
 require "tmdb/movie"
+require "tmdb/changes"
 require "tmdb/version"
 
 module TMDb
