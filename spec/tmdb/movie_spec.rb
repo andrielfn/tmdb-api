@@ -1,7 +1,6 @@
 require "spec_helper"
 
 describe TMDb::Movie do
-
   describe ".search" do
     it "searches movies given only the movie name" do
       stub_get('/search/movie').with(query: { query: 'The Lord of the Rings' })
