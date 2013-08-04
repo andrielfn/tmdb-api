@@ -1,11 +1,11 @@
 require "httparty"
 require "json"
 
-require "tmdb/fetcher"
-require "tmdb/searchable"
-require "tmdb/movie"
-require "tmdb/changes"
-require "tmdb/version"
+require "tmdb-api/fetcher"
+require "tmdb-api/searchable"
+require "tmdb-api/movie"
+require "tmdb-api/changes"
+require "tmdb-api/version"
 
 module TMDb
   class << self
