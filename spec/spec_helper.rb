@@ -1,4 +1,4 @@
-require 'tmdb'
+require 'tmdb-api'
 require 'rspec'
 require 'webmock/rspec'
 
