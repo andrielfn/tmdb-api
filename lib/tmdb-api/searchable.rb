@@ -24,7 +24,8 @@ module TMDb
       result['results'].map { |attributes| new(attributes) }
     end
 
-    # Removes the module part from the expression in the string.
+    private
+
     def resource
       name.split('::').last.downcase || ''
     end
