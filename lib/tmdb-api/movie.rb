@@ -1,5 +1,5 @@
 module TMDb
-  class Movie
+  class Movie < Base
     extend Searchable
 
     # Movie attributes
@@ -9,83 +9,75 @@ module TMDb
                  :production_countries, :release_date, :revenue, :spoken_languages,
                  :status, :tagline, :title, :vote_average, :vote_count
 
-    attr_accessor *ATTRIBUTES
+    attr_reader *ATTRIBUTES
 
-    def initialize(attrs)
-      ATTRIBUTES.each { |attr| instance_variable_set("@#{attr}", attrs[attr.to_s]) }
-    end
-
-    # Get the basic movie information for a specific movie ID.
+    # Public: Get the basic movie information for a specific movie ID.
     #
-    # id - Movie ID.
+    # id      - The ID of the movie.
     # options - The hash options used to filter the search (default: {}):
-    #           :language - Language of the result data (ISO 639-1 codes) (default: en).
+    #           :language - Language of the result data (ISO 639-1 codes)
+    #                       (default: en).
     #
     # Examples
     #
-    # TMDb::Movie.find(24)
-    #
-    # TMDb::Movie.find(32123, language: 'pt')
-    #
+    # TMDb::Movie.find(68721)
+    # TMDb::Movie.find(68721, language: 'pt')
     def self.find(id, options = {})
-      new Fetcher::get("/movie/#{id}", options)
+      res = get("/movie/#{id}", query: options)
+      res.success? ? Movie.new(res) : bad_response(res)
     end
 
-    # Get the alternative titles for a specific movie ID.
+    # Public: Get the alternative titles for a specific movie ID.
     #
     # options - The hash options used to filter the search (default: {}):
     #           :country - Titles for a specific country (ISO 3166-1 code).
     #
     # Examples
     #
-    # TMDb::Movie.alternative_titles(598, country: 'br')
-    #
+    # TMDb::Movie.alternative_titles(68721, country: 'br')
     def self.alternative_titles(id, options = {})
-      result = Fetcher::get("/movie/#{id}/alternative_titles", options)
-      result['titles']
+      res = get("/movie/#{id}/alternative_titles", query: options)
+      res.success? ? res['titles'] : bad_response(res)
     end
 
-    # Get the images (posters and backdrops) for a specific movie id.
+    # Public: Get the images (posters and backdrops) for a specific movie ID.
     #
     # options - The hash options used to filter the search (default: {}):
     #           :language - Images of a specific language (ISO 639-1 code).
     #
     # Examples
     #
-    # TMDb::Movie.find(598).images
-    #
-    # movie = TMDb::Movie.images(598, language: 'pt')
-    #
+    # TMDb::Movie.find(68721).images
+    # TMDb::Movie.images(68721, language: 'pt')
     def self.images(id, options = {})
-      Fetcher::get("/movie/#{id}/images", options)
+      res = get("/movie/#{id}/images", query: options)
+      res.success? ? res : bad_response(res)
     end
 
-    # Get the plot keywords for a specific movie id.
+    # Public: Get the plot keywords for a specific movie ID.
     #
     # options - The hash options used to filter the search (default: {}):
     #           :language - Images of a specific language (ISO 639-1 code).
     #
     # Examples
     #
-    # TMDb::Movie.keywords(331, language: pt)
-    #
+    # TMDb::Movie.keywords(68721, language: pt)
     def self.keywords(id, options = {})
-      result = Fetcher::get("/movie/#{id}/keywords", options)
-      result['keywords']
+      res = get("/movie/#{id}/keywords", query: options)
+      res.success? ? res['keywords'] : bad_response(res)
     end
 
-    # Get the release date by country for a specific movie id.
+    # Public: Get the release date by country for a specific movie ID.
     #
     # Examples
     #
-    # TMDb::Movie.releases(8711)
-    #
+    # TMDb::Movie.releases(68721)
     def self.releases(id)
-      result = Fetcher::get("/movie/#{id}/releases")
-      result['countries']
+      res = get("/movie/#{id}/releases")
+      res.success? ? res['countries'] : bad_response(res)
     end
 
-    # Get the list of upcoming movies. This list refreshes every day.
+    # Public: Get the list of upcoming movies. This list refreshes every day.
     # The maximum number of items this list will include is 100.
     #
     # options - The hash options used to filter the search (default: {}):
@@ -96,10 +88,14 @@ module TMDb
     #
     # TMDb::Movie.upcoming
     # TMDb::Movie.upcoming(page: 3, language: 'pt')
-    #
     def self.upcoming(options = {})
-      response = Fetcher::get('/movie/upcoming', options)
-      response['results'].map { |movie| new(movie) }
+      res = get('/movie/upcoming', query: options)
+
+      if res.success?
+        res['results'].map { |movie| Movie.new(movie) }
+      else
+        bad_response(res)
+      end
     end
   end
 end

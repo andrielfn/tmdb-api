@@ -24,5 +24,11 @@ describe TMDb::Movie do
       expect(upcoming.first.id).to eql(185407)
       expect(upcoming.first.title).to eql('Israel: A Home Movie / Kach Ra’inu')
     end
+
+    it 'raises with a bad request' do
+      stub_get('/movie/upcoming').to_return(status: 404)
+
+      expect { TMDb::Movie.upcoming }.to raise_error ArgumentError
+    end
   end
 end
