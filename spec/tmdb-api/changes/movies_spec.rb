@@ -48,5 +48,11 @@ describe TMDb::Changes do
         'adult' => false
       })
     end
+
+    it 'raises with a bad request' do
+      stub_get('/movie/changes').to_return(status: 404)
+
+      expect { TMDb::Changes.movies }.to raise_error ArgumentError
+    end
   end
 end

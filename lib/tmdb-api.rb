@@ -1,7 +1,8 @@
 require "httparty"
 require "json"
 
-require "tmdb-api/fetcher"
+require "tmdb-api/httparty"
+require "tmdb-api/base"
 require "tmdb-api/searchable"
 require "tmdb-api/movie"
 require "tmdb-api/changes"
