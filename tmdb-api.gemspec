@@ -8,9 +8,9 @@ Gem::Specification.new do |spec|
   spec.version       = TMDb::VERSION
   spec.authors       = ["Andriel Nuernberg"]
   spec.email         = ["andrielfn@gmail.com"]
-  spec.description   = "The Movie Database API"
-  spec.summary       = "The Mobie Database API"
-  spec.homepage      = ""
+  spec.description   = "The Movie Database API v3"
+  spec.summary       = "The Mobie Database API v3"
+  spec.homepage      = "https://github.com/andrielfn/tmdb-api"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files`.split($/)
