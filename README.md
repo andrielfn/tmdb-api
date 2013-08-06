@@ -1,10 +1,8 @@
-# The Movie Database API v3
+# The Movie Database API
 
-Ruby wrapper for the The Movie Database API.
+A simple Ruby wrapper for the The Movie Database API v3.
 
-This wrapper uses the last version of TMDb API.
-
-More info about the API you can see here: [http://docs.themoviedb.apiary.io/](http://docs.themoviedb.apiary.io).
+About the TMDb API documentation and everything else you can se here: [http://docs.themoviedb.apiary.io/](http://docs.themoviedb.apiary.io).
 
 ## Installation
 
@@ -14,23 +12,24 @@ Add this line to your application's Gemfile:
 
 And then execute:
 
-    $ bundle
+    $ bundle install
 
 Or install it yourself as:
 
     $ gem install tmdb
 
-## Usage
 
-### API Key
+## API Key
 First of all, you need set your API Key provided by TMDb.
 
 ```ruby
 TMDb.api_key = '56565958363476674e5e63643c787867'
 ```
 
-### Find a movie
-Get the basic movie information for a specific movie ID.
+## Usage
+
+### Find a movie by id
+Get the basic movie information for a specific movie id.
 
 ```ruby
 TMDB::Movie.find(24)
@@ -40,7 +39,7 @@ TMDB::Movie.find(603, language: 'pt')
 # => #<TMDb::Movie:0x007f99 @id=603, @title="The Matrix", @imdb_id="tt0133093" ... >
 ```
 
-### Search movie
+### Search movies
 Search for movies by title.
 
 ```ruby
@@ -52,16 +51,14 @@ TMDb::Movie.search('Forrest')
 TMDb::Movie.search('wall e', year: 2003)
 # => [#<TMDb::Movie:0x007f92 @id=10681, @original_title="WALL·E", ...>]
 ```
-You can filter the serch with the following options: _page_, _language_,
-_include_adult_, and _year_.
+You also have another options that you can use to filter the search: `:page`,
+`:language`, `:include_adult` and `:year`.
 
 ### Alternative titles
-Get the alternative titles for a specific movie ID.
+Get the alternative titles for a specific movie id.
 
 ```ruby
-movie = TMDB::Movie.find(598)
-
-movie.alternative_titles
+TMDB::Movie.alternative_titles(598)
 # => [{"iso_3166_1"=>"RU", "title"=>"Город бога"},
 # {"iso_3166_1"=>"IT", "title"=>"City of God - La città di Dio"},
 # {"iso_3166_1"=>"BR", "title"=>"Cidade de Deus"},
@@ -77,10 +74,10 @@ movie.alternative_titles(country: 'br')
 ```
 
 ### Images
-Get the images (posters and backdrops) for a specific movie ID.
+Get the images (posters and backdrops) for a specific movie id.
 
 ```ruby
-TMDb::Movie.find(598).images
+TMDb::Movie.images(598)
 # => {"id"=>598,
 #     "backdrops"=> [
 #       {
@@ -106,7 +103,63 @@ TMDb::Movie.find(598).images
 #       }
 #     ]}
 
-TMDb::Movie.find(598).images(language: 'pt')
+TMDb::Movie.images(598, language: 'pt')
+```
+
+### Movie keywords
+
+Get the plot keywords for a specific movie id.
+
+```ruby
+TMDb::Movie.keywords(68721)
+# => [
+#      {"id"=>2651, "name"=>"nanotechnology"},
+#      {"id"=>9715, "name"=>"superhero"},
+#      {"id"=>180547, "name"=>"marvel cinematic universe"},
+#      {"id"=>156792, "name"=>"3d"},
+#      {"id"=>156395, "name"=>"imax"},
+#      {"id"=>179430, "name"=>"aftercreditsstinger"},
+#      {"id"=>10836, "name"=>"third part"}
+#    ]
+```
+
+### Movie releases
+
+Get the release date by country for a specific movie id.
+
+```ruby
+TMDb::Movie.releases(68721)
+# => [
+#      {"iso_3166_1"=>"US", "certification"=>"PG-13", "release_date"=>"2013-05-03"},
+#      {"iso_3166_1"=>"DE", "certification"=>"12", "release_date"=>"2013-04-30"},
+#      {"iso_3166_1"=>"FR", "certification"=>"", "release_date"=>"2013-04-24"},
+#      {"iso_3166_1"=>"BG", "certification"=>"C", "release_date"=>"2013-04-26"},
+#      {"iso_3166_1"=>"NL", "certification"=>"", "release_date"=>"2013-04-24"},
+#      {"iso_3166_1"=>"NO", "certification"=>"", "release_date"=>"2013-04-26"},
+#      ...,
+#    ]
+```
+
+### Upcoming movies
+
+Get the list of upcoming movies. This list refreshes every day.
+The maximum number of items this list will include is 100.
+
+```ruby
+TMDb::Movie.upcoming
+# => [
+#      #<TMDb::Movie:0x007fefa4202a10
+#       @adult=false,
+#       @backdrop_path="/rwibG3yurWQvpjut54nbeiSGhVt.jpg",
+#       @id=157375,
+#       @original_title="The Lifeguard",
+#       @popularity=8.708121262,
+#       @poster_path="/xoX6C3mLynwSNRij2tyDT5eVmoc.jpg",
+#       @release_date="2013-08-30",
+#       @title="The Lifeguard",
+#       @vote_average=5.5,
+#       @vote_count=3>
+#    ]
 ```
 
 ### Movie object
