@@ -1,5 +1,7 @@
 # The Movie Database API
 
+[![Build Status](https://travis-ci.org/andrielfn/tmdb-api.png)](https://travis-ci.org/andrielfn/tmdb-api)
+
 A simple Ruby wrapper for the The Movie Database API v3.
 
 About the TMDb API documentation and everything else you can se here: [http://docs.themoviedb.apiary.io/](http://docs.themoviedb.apiary.io).
