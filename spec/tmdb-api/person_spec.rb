@@ -1,5 +1,4 @@
 require "spec_helper"
-require "pry"
 
 describe TMDb::Person do
   describe '.find' do
@@ -45,6 +44,23 @@ describe TMDb::Person do
     it 'raises with a bad request' do
       stub_get('/person/666/images').to_return(status: 404)
       expect { TMDb::Person.images(666) }.to raise_error ArgumentError
+    end
+  end
+
+  describe '.popular' do
+    it "gets a list of popular people" do
+      stub_get('/person/popular').to_return(json_response('person/popular.json'))
+
+      popular = TMDb::Person.popular
+
+      expect(popular.first.adult).to eq(false)
+      expect(popular.first.name).to eq('Daniel Craig')
+      expect(popular.first.profile_path).to eq("/wWMdqiqW6unT6TnXydQbOtYffeO.jpg")
+    end
+
+    it "raises with a bad request" do
+      stub_get('/person/popular').with(query: { page: 200 }).to_return(status: 404)
+      expect{ TMDb::Person.popular(page: 200).to raise_error ArgumentError }
     end
   end
 end
