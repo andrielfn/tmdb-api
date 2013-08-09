@@ -7,6 +7,7 @@ require "tmdb-api/searchable"
 require "tmdb-api/movie"
 require "tmdb-api/changes"
 require "tmdb-api/version"
+require "tmdb-api/person"
 
 module TMDb
   class << self
