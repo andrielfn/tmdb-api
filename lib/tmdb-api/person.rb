@@ -33,5 +33,24 @@ module TMDb
       res = get("/person/#{id}/images")
       res.success? ? res : bad_response(res)
     end
+
+    # Public: Get a list of popular people.
+    #
+    # options - The hash options used to filter the search (default: {}):
+    #           :page - List's page.
+    #
+    # Examples
+    #
+    # TMDb::Person.popular
+    # TMDb::Person.popular(page: 4)
+    def self.popular(options = {})
+      res = get('/person/popular', query: options)
+
+      if res.success?
+        res['results'].map { |person| Person.new(person) }
+      else
+        bad_response(res)
+      end
+    end
   end
 end
