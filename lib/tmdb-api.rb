@@ -1,12 +1,19 @@
-require "httparty"
-require "json"
+require 'httparty'
+require 'json'
 
-require "tmdb-api/httparty"
-require "tmdb-api/base"
-require "tmdb-api/searchable"
-require "tmdb-api/movie"
-require "tmdb-api/changes"
-require "tmdb-api/version"
+require 'tmdb-api/httparty'
+
+require 'tmdb-api/base'
+require 'tmdb-api/searchable'
+
+require 'tmdb-api/movie'
+require 'tmdb-api/genre'
+require 'tmdb-api/production_company'
+require 'tmdb-api/production_country'
+require 'tmdb-api/spoken_language'
+require 'tmdb-api/changes'
+
+require 'tmdb-api/version'
 
 module TMDb
   class << self
