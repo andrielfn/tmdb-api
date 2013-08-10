@@ -1,6 +1,7 @@
 # The Movie Database API
 
 [![Build Status](https://travis-ci.org/andrielfn/tmdb-api.png)](https://travis-ci.org/andrielfn/tmdb-api)
+[![Code Climate](https://codeclimate.com/github/andrielfn/tmdb-api.png)](https://codeclimate.com/github/andrielfn/tmdb-api)
 
 A simple Ruby wrapper for the The Movie Database API v3.
 
