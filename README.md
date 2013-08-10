@@ -41,6 +41,12 @@ TMDB::Movie.find(603, language: 'pt')
 # => #<TMDb::Movie:0x007f99 @id=603, @title="The Matrix", @imdb_id="tt0133093" ... >
 ```
 
+Available attributes: `id`, `adult`, `backdrop_path`, `belongs_to_collection`,
+`budget`, `genres`, `homepage`, `imdb_id`, `original_title`, `overview`,
+`popularity`, `poster_path`, `production_companies`, `runtime`,
+`production_countries`, `release_date`, `revenue`, `spoken_languages`, `status`,
+ `tagline`, `title`, `vote_average`, `vote_count`.
+
 ### Search movies
 Search for movies by title.
 
@@ -162,36 +168,6 @@ TMDb::Movie.upcoming
 #       @vote_average=5.5,
 #       @vote_count=3>
 #    ]
-```
-
-### Movie object
-
-```ruby
-movie = TMDb::Movie.find(27205)
-
-movie.id # => 27205
-movie.adult # => false
-movie.backdrop_path # => /s2bT29y0ngXxxu2IA8AOzzXTRhd.jpg
-movie.belongs_to_collection # => {"id"=>179836, "name"=>"Inception Collection", "poster_path"=>"/7OtEJQjBhxNug5TyY0ny4ttuKdg.jpg", "backdrop_path"=>"/73WuAqGGCv3F8Rwy5FTnYlji6IS.jpg"}
-movie.budget # => 160000000
-movie.genres # => [{"id"=>28, "name"=>"Action"}, {"id"=>12, "name"=>"Adventure"}, {"id"=>9648, "name"=>"Mystery"}, {"id"=>878, "name"=>"Science Fiction"}, {"id"=>53, "name"=>"Thriller"}]
-movie.homepage # => http://inceptionmovie.warnerbros.com/
-movie.imdb_id # => tt1375666
-movie.original_title # => Inception
-movie.overview # => Dom Cobb, a skilled thief who commits corporate espionage by infiltrating the subconscious of his targets is offered a chance to regain his old life as payment for a task considered to be impossible: "inception", the implantation of another person's idea into a target's subconscious.
-movie.popularity # => 8.908730111185815
-movie.poster_path # => /tAXARVreJnWfoANIHASmgYk4SB0.jpg
-movie.production_companies # => [{"name"=>"Warner Bros. Pictures", "id"=>174}, {"name"=>"Syncopy", "id"=>9996}]
-movie.runtime # => 148
-movie.production_countries # => [{"iso_3166_1"=>"US", "name"=>"United States of America"}]
-movie.release_date # => 2010-07-16
-movie.revenue # => 825532764
-movie.spoken_languages # => [{"iso_639_1"=>"en", "name"=>"English"}, {"iso_639_1"=>"ja", "name"=>"日本語"}, {"iso_639_1"=>"fr", "name"=>"Français"}]
-movie.status # => Released
-movie.tagline # => Your mind is the scene of the crime.
-movie.title # => Inception
-movie.vote_average # => 8.2
-movie.vote_count # => 497
 ```
 
 ## Contributing
