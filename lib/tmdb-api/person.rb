@@ -8,7 +8,7 @@ module TMDb
 
     attr_reader *ATTRIBUTES
 
-    # Public: Get the basic person information for a specific person ID.
+    # Public: Gets the basic person information for a specific person ID.
     #
     # id      - The ID of the person.
     # options - The hash options used to filter the search (default: {}):
@@ -22,7 +22,7 @@ module TMDb
       res.success? ? Person.new(res) : bad_response(res)
     end
 
-    # Public: Get the images for a specific person ID.
+    # Public: Gets the images for a specific person ID.
     #
     # id  - The person's ID
     #
@@ -34,7 +34,7 @@ module TMDb
       res.success? ? res : bad_response(res)
     end
 
-    # Public: Get a list of popular people.
+    # Public: Gets a list of popular people.
     #
     # options - The hash options used to filter the search (default: {}):
     #           :page - List's page.
