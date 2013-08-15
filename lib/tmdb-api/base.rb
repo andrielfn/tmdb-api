@@ -38,8 +38,21 @@ module TMDb
     # Returns nothing
     def load(attributes)
       attributes.each do |key, value|
-        value = build_objects(key, value) if value.is_a?(Array)
+        value = build_objects(key, value) if candidate_to_object?(value)
         self.instance_variable_set("@#{key}", value)
+      end
+    end
+
+    # Internal: Verifies if the value is an array of objects.
+    #
+    # value - value to be evaluated
+    #
+    # Returns true or false
+    def candidate_to_object?(value)
+      if value.is_a?(Array) and value.size > 0
+        !value.first.is_a? String
+      else
+        false
       end
     end
 
