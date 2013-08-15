@@ -12,8 +12,13 @@ require 'tmdb-api/production_company'
 require 'tmdb-api/production_country'
 require 'tmdb-api/spoken_language'
 require 'tmdb-api/changes'
+require 'tmdb-api/person'
 
 require 'tmdb-api/version'
+
+ActiveSupport::Inflector.inflections do |inflect|
+  inflect.uncountable %w( also_known_as )
+end
 
 module TMDb
   class << self
