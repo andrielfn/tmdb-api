@@ -16,6 +16,10 @@ require 'tmdb-api/person'
 
 require 'tmdb-api/version'
 
+ActiveSupport::Inflector.inflections do |inflect|
+  inflect.uncountable %w( also_known_as )
+end
+
 module TMDb
   class << self
     # Set the API Key that will be use to fetch the data.

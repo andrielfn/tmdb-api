@@ -3,21 +3,26 @@ require "spec_helper"
 describe TMDb::Person do
   describe '.find' do
     it "find a person given an ID" do
-      stub_get('/person/8557').to_return(json_response('person/find.json'))
+      stub_get('/person/1327').to_return(json_response('person/find.json'))
 
-      person = TMDb::Person.find(8557)
+      person = TMDb::Person.find(1327)
 
       expect(person.adult).to eq(false)
-      expect(person.also_known_as).to eq([])
-      expect(person.biography).to eq("From Wikipedia, the free encyclopedia.\n\nFernando Meirelles (born November 9, 1955 in São Paulo, Brazil) is a Brazilian film director.\n\nHe was nominated for an Academy Award for Best Director in 2004 for his work in the Brazilian film City of God, released in 2002 in Brazil and in 2003 in the U.S. by Miramax Films. He was also nominated for the Golden Globe Best Director award in 2005 for The Constant Gardener.\n\nDescription above from the Wikipedia article Fernando Meirelles, licensed under CC-BY-SA, full list of contributors on Wikipedia.")
-      expect(person.birthday).to eq("1955-11-09")
-      expect(person.deathday).to eq("")
-      expect(person.homepage).to eq("")
-      expect(person.id).to eq(8557)
-      expect(person.name).to eq("Fernando Meirelles")
-      expect(person.place_of_birth).to eq("São Paulo, Brazil")
-      expect(person.popularity).to eq(1.4749)
-      expect(person.profile_path).to eq("/j77Z3f2m0e211ocFhPJu5ZiO12R.jpg")
+      expect(person.also_known_as).to match_array([
+    		'Sir Ian McKellan',
+    		'Sir Ian McKellen',
+    		'Ian Murray McKellen'
+      ])
+      expect(person.biography).to eq("Sir Ian Murray McKellen is an English actor. He has received a Tony Award and two Academy Award nominations. His work has spanned genres from Shakespearean and modern theatre to popular fantasy and science fiction. He is known to many for roles such as Gandalf in the Lord of the Rings film trilogy and as Magneto in the X-Men films.  In 1988, McKellen came out and announced he was gay. He became a founding member of Stonewall, one of the United Kingdom's most influential LGBT rights groups, of which he remains a prominent spokesman.  He was made a Commander of the Order of the British Empire (CBE) in 1979, and knighted in the 1991 New Year Honours for his outstanding work and contributions to theatre. In the 2008 New Year Honours he was made a Companion of Honour (CH) for services to drama and to equality.")
+      expect(person.birthday).to eq('1939-05-25')
+      expect(person.deathday).to eq('')
+      expect(person.homepage).to eq('http://www.mckellen.com/')
+      expect(person.id).to eq(1327)
+      expect(person.imdb_id).to eq('nm0005212')
+      expect(person.name).to eq('Ian McKellen')
+      expect(person.place_of_birth).to eq('Burnley, England')
+      expect(person.popularity).to eq(16.0104684226102)
+      expect(person.profile_path).to eq('/c51mP46oPgAgFf7bFWVHlScZynM.jpg')
     end
 
     it "raises with a bad request" do

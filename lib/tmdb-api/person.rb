@@ -4,7 +4,7 @@ module TMDb
 
     # Person attributes
     ATTRIBUTES = :id, :adult, :also_known_as, :biography, :birthday, :deathday,
-                 :homepage, :name, :place_of_birth, :profile_path, :popularity
+                 :homepage, :name, :place_of_birth, :profile_path, :popularity, :imdb_id
 
     attr_reader *ATTRIBUTES
 
