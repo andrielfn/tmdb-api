@@ -246,6 +246,62 @@ person.popularity # => 5.26352072707883
 person.profile_path # => "/iws3gBdQJ6tF7x6CIpepYfUKc58.jpg"
 ```
 
+### Find a person by ID
+
+Get the basic person information for a specific person id.
+
+```ruby
+TMDB::Movie.find(138)
+# => #<TMDb::Person:0x007ff02a081278 @adult=false, @id=138, @imdb_id="nm0000233", @name="Quentin Tarantino" ... >
+```
+
+### Person images
+
+Gets the images for a specific person id.
+
+```ruby
+TMDb::Person.images(138)
+# => {"id" => 138,
+# 			"profiles" => [
+# 				{
+# 					"file_path" => "/iws3gBdQJ6tF7x6CIpepYfUKc58.jpg",
+# 					"width" => 1000,
+# 					"height" => 1500,
+# 					"iso_639_1" => nil,
+# 					"aspect_ratio" => 0.67
+# 				},
+# 				{
+# 					"file_path" => "/ubJ3VWz1Zr7dempsJGH8lgREkrS.jpg",
+# 					"width" => 399,
+# 					"height" => 599,
+# 					"iso_639_1" => nil,
+# 					"aspect_ratio" => 0.67
+# 			}]
+# 		}
+```
+
+### Popular people
+
+Gets a list of popular people.
+
+```ruby
+TMDb::Person.popular
+# => [
+# 	#<TMDb::Person:0x007ff0289d1550
+# 	  @adult=false,
+# 	  @id=18918,
+# 	  @name="Dwayne Johnson",
+# 	  @popularity=27.5754694040027,
+# 	  @profile_path="/gQIWcpYo2W4MHw8UhTP2cW0jojF.jpg">,
+# 	#<TMDb::Person:0x007ff0289d1208
+# 	  @adult=false,
+# 	  @id=12835,
+# 	  @name="Vin Diesel",
+# 	  @popularity=20.5472519159021,
+# 	  @profile_path="/qwyfzMKIhxJ7ols66FgEf7eGdcI.jpg">
+# 	]
+```
+
 ## Contributing
 
 1. Fork it
