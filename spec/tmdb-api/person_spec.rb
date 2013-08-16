@@ -2,43 +2,78 @@ require "spec_helper"
 
 describe TMDb::Person do
   describe '.find' do
-    it "find a person given an ID" do
+    before do
       stub_get('/person/1327').to_return(json_response('person/find.json'))
+    end
 
-      person = TMDb::Person.find(1327)
+    let!(:person) { TMDb::Person.find(1327) }
 
+    it 'returns "adult" attribute' do
       expect(person.adult).to eq(false)
+    end
+
+    it 'returns "also_known_as" as array of strings' do
       expect(person.also_known_as).to match_array([
     		'Sir Ian McKellan',
     		'Sir Ian McKellen',
     		'Ian Murray McKellen'
       ])
-      expect(person.biography).to eq("Sir Ian Murray McKellen is an English actor. He has received a Tony Award and two Academy Award nominations. His work has spanned genres from Shakespearean and modern theatre to popular fantasy and science fiction. He is known to many for roles such as Gandalf in the Lord of the Rings film trilogy and as Magneto in the X-Men films.  In 1988, McKellen came out and announced he was gay. He became a founding member of Stonewall, one of the United Kingdom's most influential LGBT rights groups, of which he remains a prominent spokesman.  He was made a Commander of the Order of the British Empire (CBE) in 1979, and knighted in the 1991 New Year Honours for his outstanding work and contributions to theatre. In the 2008 New Year Honours he was made a Companion of Honour (CH) for services to drama and to equality.")
+    end
+
+    it 'return "biography" attribute' do
+      expect(person.biography).to start_with("Sir Ian Murray McKellen is an English actor.")
+    end
+
+    it 'returns "birthday" attribute' do
       expect(person.birthday).to eq('1939-05-25')
+    end
+
+    it 'returns "deathday" attribute' do
       expect(person.deathday).to eq('')
+    end
+
+    it 'returns "homepage" attribute' do
       expect(person.homepage).to eq('http://www.mckellen.com/')
+    end
+
+    it 'returns "id" attribute' do
       expect(person.id).to eq(1327)
+    end
+
+    it 'returns "imdb_id" attribute' do
       expect(person.imdb_id).to eq('nm0005212')
+    end
+
+    it 'returns "name" attribute' do
       expect(person.name).to eq('Ian McKellen')
+    end
+
+    it 'returns "place_of_birth" attribute' do
       expect(person.place_of_birth).to eq('Burnley, England')
+    end
+
+    it 'returns "popularity" attribute' do
       expect(person.popularity).to eq(16.0104684226102)
+    end
+
+    it 'returns "profile_path" attribute' do
       expect(person.profile_path).to eq('/c51mP46oPgAgFf7bFWVHlScZynM.jpg')
     end
 
-    it "raises with a bad request" do
+    it 'raises with a bad request' do
       stub_get('/person/666').to_return(status: 404)
       expect { TMDb::Person.find(666) }.to raise_error(ArgumentError)
     end
   end
 
   describe '.images' do
-    it "gets the images given an person ID" do
+    it 'gets the images given an person ID' do
       stub_get('/person/8557/images').to_return(json_response('person/images.json'))
 
       images = TMDb::Person.images(8557)
 
       expect(images['profiles'].first).to eq({
-  			"file_path" => "/j77Z3f2m0e211ocFhPJu5ZiO12R.jpg",
+  			"file_path" => '/j77Z3f2m0e211ocFhPJu5ZiO12R.jpg',
   			"width" => 290,
   			"height" => 290,
   			"iso_639_1" => nil,
@@ -53,19 +88,19 @@ describe TMDb::Person do
   end
 
   describe '.popular' do
-    it "gets a list of popular people" do
+    it 'gets a list of popular people' do
       stub_get('/person/popular').to_return(json_response('person/popular.json'))
 
       popular = TMDb::Person.popular
 
       expect(popular.first.adult).to eq(false)
       expect(popular.first.name).to eq('Daniel Craig')
-      expect(popular.first.profile_path).to eq("/wWMdqiqW6unT6TnXydQbOtYffeO.jpg")
+      expect(popular.first.profile_path).to eq('/wWMdqiqW6unT6TnXydQbOtYffeO.jpg')
     end
 
-    it "raises with a bad request" do
+    it 'raises with a bad request' do
       stub_get('/person/popular').with(query: { page: 200 }).to_return(status: 404)
-      expect{ TMDb::Person.popular(page: 200).to raise_error ArgumentError }
+      expect{ TMDb::Person.popular(page: 200) }.to raise_error ArgumentError
     end
   end
 end
