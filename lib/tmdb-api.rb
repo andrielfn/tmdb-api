@@ -5,6 +5,7 @@ require 'tmdb-api/httparty'
 
 require 'tmdb-api/base'
 require 'tmdb-api/searchable'
+require 'tmdb-api/inflections'
 
 require 'tmdb-api/movie'
 require 'tmdb-api/genre'
@@ -15,10 +16,6 @@ require 'tmdb-api/changes'
 require 'tmdb-api/person'
 
 require 'tmdb-api/version'
-
-ActiveSupport::Inflector.inflections do |inflect|
-  inflect.uncountable %w( also_known_as )
-end
 
 module TMDb
   class << self
