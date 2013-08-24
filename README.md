@@ -19,7 +19,7 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install tmdb
+    $ gem install tmdb-api
 
 
 ## API Key
