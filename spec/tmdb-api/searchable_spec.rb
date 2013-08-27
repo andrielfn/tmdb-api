@@ -4,7 +4,7 @@ describe TMDb::Searchable do
   describe ".search" do
     it "searches movies given only the movie name" do
       stub_get('/search/movie').with(query: { query: 'The Lord of the Rings' })
-        .to_return(json_response('search_movie_by_name.json'))
+        .to_return(json_response('searchable/search_movie_by_name.json'))
 
       movies = TMDb::Movie.search("The Lord of the Rings")
 
@@ -20,6 +20,21 @@ describe TMDb::Searchable do
       expect(movies.first.title).to eq("The Lord of the Rings: The Fellowship of the Ring")
       expect(movies.first.vote_average).to eq(8.3)
       expect(movies.first.vote_count).to eq(187)
+    end
+
+    it "searches for a person given a name" do
+      stub_get('/search/person').with(query: { query: 'Peter Jackson' })
+        .to_return(json_response('searchable/search_person_by_name.json'))
+
+      people = TMDb::Person.search('Peter Jackson')
+
+      expect(people).to have(3).items
+
+      expect(people.first.adult).to eq(false)
+      expect(people.first.id).to eq(108)
+      expect(people.first.name).to eq("Peter Jackson")
+      expect(people.first.popularity).to eq(3.411923015718)
+      expect(people.first.profile_path).to eq("/8MN8C1w1wuEHMxdvDqHP5bDFMh.jpg")
     end
 
     it 'raises with a bad request' do
