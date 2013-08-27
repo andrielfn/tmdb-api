@@ -16,6 +16,10 @@ module TMDb
     # TMDb::Movie.search('Iron Man')
     # TMDb::Movie.search('The Matrix', year: 1999)
     # TMDb::Movie.search('Forret Gump', language: 'pt', year: 1994)
+    #
+    ## For a person
+    # TMDb::Person.search('Peter Jackson')
+    # TMDb::Person.search('Paul', page: 4)
     def search(query, options = {})
       options.merge!(query: query)
       res = get("/search/#{resource}", query: options)
