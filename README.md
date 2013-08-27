@@ -183,6 +183,19 @@ TMDB::Person.find(138)
 Available attributes: `id`, `name`, `adult`, `also_known_as`, `biography`
 `birthday`, `deathday`, `homepage`, `place_of_birth`, `profile_path`, `popularity`, `imdb_id`.
 
+### Search people
+Search for people by name.
+
+```ruby
+TMDb::Person.search('Paul')
+# => [#<TMDb::Person:0x007fb572c30558 @id=8167, @name="Paul Walker", ...>,
+#     #<TMDb::Person:0x007fb572c302b0 @id=5129, @name="Paul Reubens", ...>, ...]
+
+TMDb::Person.search('Paul', page: 4)
+# => [#<TMDb::Person:0x007fb572d68d80 @id=455, @name="Paul Haggis", ...>, ...]
+```
+Available options are `:page` and `:include_adult`.
+
 ### Person images
 
 Gets the images for a specific person id.
