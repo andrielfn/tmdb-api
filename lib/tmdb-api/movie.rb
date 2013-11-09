@@ -67,6 +67,19 @@ module TMDb
       res.success? ? res['keywords'] : bad_response(res)
     end
 
+    # Public: Get the trailers for a specific movie ID.
+    #
+    # options - The hash options used to filter the search (default: {}):
+    #           :language - Images of a specific language (ISO 639-1 code).
+    #
+    # Examples
+    #
+    # TMDb::Movie.trailers(68721, language: pt)
+    def self.trailers(id, options = {})
+      res = get("/movie/#{id}/trailers", query: options)
+      res.success? ? res : bad_response(res)
+    end
+
     # Public: Get the release date by country for a specific movie ID.
     #
     # Examples

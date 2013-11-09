@@ -272,6 +272,29 @@ describe TMDb::Movie do
     end
   end
 
+  describe '.trailers' do
+    it 'return trailers for a specific movie id' do
+      stub_get('/movie/550/trailers').to_return(json_response('movie/trailers.json'))
+
+      trailers = TMDb::Movie.trailers(550)
+
+      expect(trailers['youtube']).to eq([
+        {
+          "name" => "Trailer 1",
+          "size" => "HD",
+          "source" => "SUXWAEX2jlg",
+          "type" => "trailer"
+        }
+      ])
+    end
+
+    it 'raises with a bad request' do
+      stub_get('/movie/550/trailers').to_return(status: 404)
+
+      expect { TMDb::Movie.trailers(550) }.to raise_error ArgumentError
+    end
+  end
+
   describe '.releases' do
     it 'returns the release for a specific movie' do
       stub_get('/movie/598/releases').to_return(json_response('movie/releases.json'))
