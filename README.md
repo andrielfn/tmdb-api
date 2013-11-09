@@ -132,6 +132,33 @@ TMDb::Movie.keywords(68721)
 #    ]
 ```
 
+### Movie trailers
+
+Get the trailers for a specific movie id.
+
+```ruby
+TMDb::Movie.trailers(550)
+# => {"id"=>68721, 
+#     "quicktime"=> [  
+#       {
+#         "name"=>"Teaser"
+#         "sources"=> [
+#           {"size"=>"480p","source"=>"http://trailers.apple.com/movies/marvel/ironman3/ironman3-tlr1-m4mb0_h480p.mov"},
+#           {"size"=>"720p","source"=>"http://trailers.apple.com/movies/marvel/ironman3/ironman3-tlr1-m4mb0_h720p.mov"},
+#           {"size"=>"1080p","source"=>"http://trailers.apple.com/movies/marvel/ironman3/ironman3-tlr1-m4mb0_h1080p.mov"}
+#         ]
+#       }
+#     "youtube"=> [
+#       {
+#         "name"=>"Iron Man 3 Trailer 2",
+#         "size"=>"HD",
+#         "source"=>"YLorLVa95Xo",
+#         "type"=>"Trailer"
+#       }
+#     ]
+#   }
+```
+
 ### Movie releases
 
 Get the release date by country for a specific movie id.
