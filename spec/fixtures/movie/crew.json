@@ -1,0 +1,103 @@
+{
+  "crew":
+    [
+      {
+        "id": 7469,
+        "name": "Jim Uhls",
+        "department": "Writing",
+        "job": "Author",
+        "profile_path": null
+      },
+     {
+        "id": 7474,
+        "name": "Ross Grayson Bell",
+        "department": "Production",
+        "job": "Producer",
+        "profile_path": null
+      },
+     {
+        "id": 7475,
+        "name": "Ceán Chaffin",
+        "department": "Production",
+        "job": "Producer",
+        "profile_path": null
+      },
+     {
+        "id": 1254,
+        "name": "Art Linson",
+        "department": "Production",
+        "job": "Producer",
+        "profile_path": "/dEtVivCXxQBtIzmJcUNupT1AB4H.jpg"
+      },
+     {
+        "id": 7477,
+        "name": "John King",
+        "department": "Sound",
+        "job": "Original Music Composer",
+        "profile_path": null
+      },
+     {
+        "id": 7478,
+        "name": "Michael Simpson",
+        "department": "Sound",
+        "job": "Original Music Composer",
+        "profile_path": null
+      },
+     {
+        "id": 7479,
+        "name": "Jeff Cronenweth",
+        "department": "Camera",
+        "job": "Director of Photography",
+        "profile_path": null
+      },
+     {
+        "id": 7480,
+        "name": "James Haygood",
+        "department": "Editing",
+        "job": "Editor",
+        "profile_path": null
+      },
+     {
+        "id": 7481,
+        "name": "Laray Mayfield",
+        "department": "Production",
+        "job": "Casting",
+        "profile_path": null
+      },
+     {
+        "id": 1303,
+        "name": "Alex McDowell",
+        "department": "Art",
+        "job": "Production Design",
+        "profile_path": null
+      },
+     {
+        "id": 7763,
+        "name": "Ren Klyce",
+        "department": "Sound",
+        "job": "Sound Editor",
+        "profile_path": null
+      },
+     {
+        "id": 7764,
+        "name": "Richard Hymns",
+        "department": "Sound",
+        "job": "Sound Editor",
+        "profile_path": null
+      },
+     {
+        "id": 7467,
+        "name": "David Fincher",
+        "department": "Directing",
+        "job": "Director",
+        "profile_path": "/dcBHejOsKvzVZVozWJAPzYthb8X.jpg"
+      },
+     {
+        "id": 7468,
+        "name": "Chuck Palahniuk",
+        "department": "Writing",
+        "job": "Novel",
+        "profile_path": "/8nOJDJ6SqwV2h7PjdLBDTvIxXvx.jpg"
+      }
+    ]
+  }
