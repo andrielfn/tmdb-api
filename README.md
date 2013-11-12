@@ -29,6 +29,12 @@ First of all, you need set your API Key provided by TMDb.
 TMDb.api_key = '56565958363476674e5e63643c787867'
 ```
 
+Also it's possible set the API in the `TMDB_API_KEY` environment variable:
+
+```
+export TMDB_API_KEY='56565958363476674e5e63643c787867'
+```
+
 ## Usage
 
 ### Find a movie by id
