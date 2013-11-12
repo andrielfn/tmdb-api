@@ -82,6 +82,58 @@ movie.alternative_titles(country: 'br')
 # => [{"iso_3166_1"=>"BR", "title"=>"Cidade de Deus"}]
 ```
 
+### Cast
+Get the cast for a specific movie id.
+
+```ruby
+TMDb::Movie.cast(550)
+# => [
+#      {
+#        "id"=>819,
+#        "name"=>"Edward Norton",
+#        "character"=>"The Narrator",
+#        "order"=>0,
+#        "cast_id"=>4,
+#        "profile_path"=>"/588Hrov6wwM9WcU88nJHlw2iufN.jpg"
+#      },
+#      {
+#        "id"=>287,
+#        "name"=>"Brad Pitt",
+#        "character"=>"Tyler Durden",
+#        "order"=>1,
+#        "cast_id"=>5,
+#        "profile_path"=>"/kc3M04QQAuZ9woUvH3Ju5T7ZqG5.jpg"
+#      },
+#      {
+#        ...
+#      }
+#    ]
+
+### Crew
+Get the crew for a specific movie id.
+
+```ruby
+TMDb::Movie.crew(550)
+# => [
+#      {
+#        "id"=>7469,
+#        "name"=>"Jim Uhls",
+#        "department"=>"Writing",
+#        "job"=>"Author",
+#        "profile_path"=>nil
+#      },
+#      {
+#        "id"=>7474,
+#        "name"=>"Ross Grayson Bell",
+#        "department"=>"Production",
+#        "job"=>"Producer",
+#        "profile_path"=>nil
+#      },
+#      {
+#        ...
+#      }
+#    ]
+
 ### Images
 Get the images (posters and backdrops) for a specific movie id.
 
@@ -137,7 +189,7 @@ TMDb::Movie.keywords(68721)
 Get the trailers for a specific movie id.
 
 ```ruby
-TMDb::Movie.trailers(550)
+TMDb::Movie.trailers(68721)
 # => {"id"=>68721, 
 #     "quicktime"=> [  
 #       {
