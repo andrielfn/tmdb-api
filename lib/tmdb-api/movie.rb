@@ -40,6 +40,34 @@ module TMDb
       res.success? ? res['titles'] : bad_response(res)
     end
 
+    # Public: Get the cast for a specific movie ID.
+    #
+    # options - The hash options used to filter the search (default: {}):
+    #           :language - Images of a specific language (ISO 639-1 code).
+    #
+    # Examples
+    #
+    # TMDb::Movie.cast(68721, language: pt)
+
+    def self.cast(id, options = {})
+      res = get("/movie/#{id}/casts", query: options)
+      res.success? ? res['cast'] : bad_response(res)
+    end
+
+    # Public: Get the crew for a specific movie ID.
+    #
+    # options - The hash options used to filter the search (default: {}):
+    #           :language - Images of a specific language (ISO 639-1 code).
+    #
+    # Examples
+    #
+    # TMDb::Movie.crew(68721, language: pt)
+
+    def self.crew(id, options = {})
+      res = get("/movie/#{id}/casts", query: options)
+      res.success? ? res['crew'] : bad_response(res)
+    end
+
     # Public: Get the images (posters and backdrops) for a specific movie ID.
     #
     # options - The hash options used to filter the search (default: {}):
@@ -49,6 +77,7 @@ module TMDb
     #
     # TMDb::Movie.find(68721).images
     # TMDb::Movie.images(68721, language: 'pt')
+
     def self.images(id, options = {})
       res = get("/movie/#{id}/images", query: options)
       res.success? ? res : bad_response(res)

@@ -183,6 +183,61 @@ describe TMDb::Movie do
     end
   end
 
+  describe '.cast' do
+    it 'returns the cast for a specific movie' do
+      stub_get('/movie/550/casts')
+        .to_return(json_response('movie/cast.json'))
+
+      cast = TMDb::Movie.cast(550)
+
+      expect(cast).to have(31).items
+
+      expect(cast.first).to eq(
+        {
+          "id"=>819,
+          "name"=>"Edward Norton",
+          "character"=>"The Narrator",
+          "order"=>0,
+          "cast_id"=>4,
+          "profile_path"=>"/588Hrov6wwM9WcU88nJHlw2iufN.jpg"
+        })
+    end
+
+    it 'raises with a bad request' do
+      stub_get('/movie/invalid-id/casts').to_return(status: 404)
+
+      expect { TMDb::Movie.cast('invalid-id') }
+        .to raise_error ArgumentError
+    end
+  end
+
+  describe '.crew' do
+    it 'returns the crew for a specific movie' do
+      stub_get('/movie/550/casts')
+        .to_return(json_response('movie/crew.json'))
+
+      crew = TMDb::Movie.crew(550)
+
+      expect(crew).to have(14).items
+
+      expect(crew.first).to eq(
+        {
+          "id"=>7469,
+          "name"=>"Jim Uhls",
+          "department"=>"Writing",
+          "job"=>"Author",
+          "profile_path"=>nil
+        })
+    end
+
+    it 'raises with a bad request' do
+      stub_get('/movie/invalid-id/casts').to_return(status: 404)
+
+      expect { TMDb::Movie.crew('invalid-id') }
+        .to raise_error ArgumentError
+    end
+  end
+
   describe '.images' do
     it 'returns the images (posters and backdrops) for a specific movie ID' do
       stub_get('/movie/598/images')
