@@ -50,7 +50,7 @@ module TMDb
     # TMDb::Movie.cast(68721, language: pt)
 
     def self.cast(id, options = {})
-      res = get("/movie/#{id}/casts", query: options)
+      res = get("/movie/#{id}/credits", query: options)
       res.success? ? res['cast'] : bad_response(res)
     end
 
@@ -64,7 +64,7 @@ module TMDb
     # TMDb::Movie.crew(68721, language: pt)
 
     def self.crew(id, options = {})
-      res = get("/movie/#{id}/casts", query: options)
+      res = get("/movie/#{id}/credits", query: options)
       res.success? ? res['crew'] : bad_response(res)
     end
 
