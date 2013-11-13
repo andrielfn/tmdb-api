@@ -12,7 +12,7 @@ describe TMDb do
   end
 
   it 'accepts the API Key from the environment variable' do
-    TMDb.remove_instance_variable(:@api_key)
+    TMDb.api_key = nil
     ENV['TMDB_API_KEY'] = '0beec7b5ea3f0fdbc95d0dd47f3c5bc275da8a33'
     expect(TMDb.api_key).to eql('0beec7b5ea3f0fdbc95d0dd47f3c5bc275da8a33')
   end
