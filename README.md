@@ -114,6 +114,7 @@ TMDb::Movie.cast(550)
 #        ...
 #      }
 #    ]
+```
 
 ### Crew
 Get the crew for a specific movie id.
@@ -139,6 +140,7 @@ TMDb::Movie.crew(550)
 #        ...
 #      }
 #    ]
+```
 
 ### Images
 Get the images (posters and backdrops) for a specific movie id.
