@@ -185,12 +185,12 @@ describe TMDb::Movie do
 
   describe '.cast' do
     it 'returns the cast for a specific movie' do
-      stub_get('/movie/550/casts')
-        .to_return(json_response('movie/cast.json'))
+      stub_get('/movie/550/credits')
+        .to_return(json_response('movie/credits.json'))
 
       cast = TMDb::Movie.cast(550)
 
-      expect(cast).to have(31).items
+      expect(cast).to have(72).items
 
       expect(cast.first).to eq(
         {
@@ -204,7 +204,7 @@ describe TMDb::Movie do
     end
 
     it 'raises with a bad request' do
-      stub_get('/movie/invalid-id/casts').to_return(status: 404)
+      stub_get('/movie/invalid-id/credits').to_return(status: 404)
 
       expect { TMDb::Movie.cast('invalid-id') }
         .to raise_error ArgumentError
@@ -213,8 +213,8 @@ describe TMDb::Movie do
 
   describe '.crew' do
     it 'returns the crew for a specific movie' do
-      stub_get('/movie/550/casts')
-        .to_return(json_response('movie/crew.json'))
+      stub_get('/movie/550/credits')
+        .to_return(json_response('movie/credits.json'))
 
       crew = TMDb::Movie.crew(550)
 
@@ -231,7 +231,7 @@ describe TMDb::Movie do
     end
 
     it 'raises with a bad request' do
-      stub_get('/movie/invalid-id/casts').to_return(status: 404)
+      stub_get('/movie/invalid-id/credits').to_return(status: 404)
 
       expect { TMDb::Movie.crew('invalid-id') }
         .to raise_error ArgumentError
