@@ -1,5 +1,4 @@
 require 'active_support/core_ext/string'
-require "pry"
 
 module TMDb
   class Base
