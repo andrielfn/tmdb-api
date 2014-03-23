@@ -8,55 +8,22 @@ describe TMDb::Person do
 
     let!(:person) { TMDb::Person.find(1327) }
 
-    it 'returns "adult" attribute' do
+    it 'returns a TMDb::Person object with the filled attributes' do
       expect(person.adult).to eq(false)
-    end
-
-    it 'returns "also_known_as" as array of strings' do
       expect(person.also_known_as).to match_array([
-    		'Sir Ian McKellan',
-    		'Sir Ian McKellen',
-    		'Ian Murray McKellen'
+        'Sir Ian McKellan',
+        'Sir Ian McKellen',
+        'Ian Murray McKellen'
       ])
-    end
-
-    it 'return "biography" attribute' do
       expect(person.biography).to start_with("Sir Ian Murray McKellen is an English actor.")
-    end
-
-    it 'returns "birthday" attribute' do
-      expect(person.birthday).to eq('1939-05-25')
-    end
-
-    it 'returns "deathday" attribute' do
-      expect(person.deathday).to eq('')
-    end
-
-    it 'returns "homepage" attribute' do
+      expect(person.birthday).to eq(Date.parse('1939-05-25'))
+      expect(person.deathday).to eq(nil)
       expect(person.homepage).to eq('http://www.mckellen.com/')
-    end
-
-    it 'returns "id" attribute' do
       expect(person.id).to eq(1327)
-    end
-
-    it 'returns "imdb_id" attribute' do
       expect(person.imdb_id).to eq('nm0005212')
-    end
-
-    it 'returns "name" attribute' do
       expect(person.name).to eq('Ian McKellen')
-    end
-
-    it 'returns "place_of_birth" attribute' do
       expect(person.place_of_birth).to eq('Burnley, England')
-    end
-
-    it 'returns "popularity" attribute' do
       expect(person.popularity).to eq(16.0104684226102)
-    end
-
-    it 'returns "profile_path" attribute' do
       expect(person.profile_path).to eq('/c51mP46oPgAgFf7bFWVHlScZynM.jpg')
     end
 

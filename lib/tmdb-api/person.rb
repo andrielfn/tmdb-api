@@ -2,9 +2,8 @@ module TMDb
   class Person < Base
     extend Searchable
 
-    ATTRIBUTES = :id, :adult, :also_known_as, :biography, :birthday, :deathday,
-                 :homepage, :name, :place_of_birth, :profile_path, :popularity,
-                 :imdb_id, :known_for
+    ATTRIBUTES = :id, :adult, :also_known_as, :biography, :homepage, :name,
+      :place_of_birth, :profile_path, :popularity, :imdb_id, :known_for
 
     attr_reader *ATTRIBUTES
 
@@ -51,6 +50,16 @@ module TMDb
       else
         bad_response(res)
       end
+    end
+
+    # Public: return the parsed birthday.
+    def birthday
+      Date.parse(@birthday) rescue nil
+    end
+
+    # Public: return the parsed deathday.
+    def deathday
+      Date.parse(@deathday) rescue nil
     end
   end
 end
