@@ -1,10 +1,6 @@
 module TMDb
   class SpokenLanguage < Base
-
-    # Spoken language attributes
-    ATTRIBUTES = :iso_639_1, :name
-
-    attr_reader *ATTRIBUTES
+    attr_reader :iso_639_1, :name
 
     # Public: alias for the iso_639_1 attribute.
     def code

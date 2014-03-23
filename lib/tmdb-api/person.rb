@@ -15,7 +15,7 @@ module TMDb
     #
     # Examples
     #
-    # TMDb::Person.find(138)
+    #   TMDb::Person.find(138)
     def self.find(id, options = {})
       res = get("/person/#{id}", query: options)
       res.success? ? Person.new(res) : bad_response(res)
@@ -27,7 +27,7 @@ module TMDb
     #
     # Examples
     #
-    # TMDb::Person.images(138)
+    #   TMDb::Person.images(138)
     def self.images(id)
       res = get("/person/#{id}/images")
       res.success? ? res : bad_response(res)
@@ -40,8 +40,8 @@ module TMDb
     #
     # Examples
     #
-    # TMDb::Person.popular
-    # TMDb::Person.popular(page: 4)
+    #   TMDb::Person.popular
+    #   TMDb::Person.popular(page: 4)
     def self.popular(options = {})
       res = get('/person/popular', query: options)
 

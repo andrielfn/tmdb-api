@@ -2,12 +2,11 @@ module TMDb
   class Movie < Base
     extend Searchable
 
-    # Movie attributes
     ATTRIBUTES = :id, :adult, :backdrop_path, :belongs_to_collection, :budget,
-                 :genres, :homepage, :imdb_id, :original_title, :overview,
-                 :popularity, :poster_path, :production_companies, :runtime,
-                 :production_countries, :release_date, :revenue, :spoken_languages,
-                 :status, :tagline, :title, :vote_average, :vote_count
+      :genres, :homepage, :imdb_id, :original_title, :overview, :popularity,
+      :poster_path, :production_companies, :runtime, :production_countries,
+      :release_date, :revenue, :spoken_languages, :status, :tagline, :title,
+      :vote_average, :vote_count
 
     attr_reader *ATTRIBUTES
 
@@ -20,8 +19,8 @@ module TMDb
     #
     # Examples
     #
-    # TMDb::Movie.find(68721)
-    # TMDb::Movie.find(68721, language: 'pt')
+    #   TMDb::Movie.find(68721)
+    #   TMDb::Movie.find(68721, language: 'pt')
     def self.find(id, options = {})
       res = get("/movie/#{id}", query: options)
       res.success? ? Movie.new(res) : bad_response(res)
@@ -34,7 +33,7 @@ module TMDb
     #
     # Examples
     #
-    # TMDb::Movie.alternative_titles(68721, country: 'br')
+    #   TMDb::Movie.alternative_titles(68721, country: 'br')
     def self.alternative_titles(id, options = {})
       res = get("/movie/#{id}/alternative_titles", query: options)
       res.success? ? res['titles'] : bad_response(res)
@@ -47,7 +46,7 @@ module TMDb
     #
     # Examples
     #
-    # TMDb::Movie.cast(68721, language: pt)
+    #   TMDb::Movie.cast(68721, language: pt)
     def self.cast(id, options = {})
       res = get("/movie/#{id}/credits", query: options)
       res.success? ? res['cast'] : bad_response(res)
@@ -60,8 +59,7 @@ module TMDb
     #
     # Examples
     #
-    # TMDb::Movie.crew(68721, language: pt)
-
+    #   TMDb::Movie.crew(68721, language: pt)
     def self.crew(id, options = {})
       res = get("/movie/#{id}/credits", query: options)
       res.success? ? res['crew'] : bad_response(res)
@@ -74,9 +72,8 @@ module TMDb
     #
     # Examples
     #
-    # TMDb::Movie.find(68721).images
-    # TMDb::Movie.images(68721, language: 'pt')
-
+    #   TMDb::Movie.find(68721).images
+    #   TMDb::Movie.images(68721, language: 'pt')
     def self.images(id, options = {})
       res = get("/movie/#{id}/images", query: options)
       res.success? ? res : bad_response(res)
@@ -89,7 +86,7 @@ module TMDb
     #
     # Examples
     #
-    # TMDb::Movie.keywords(68721, language: pt)
+    #   TMDb::Movie.keywords(68721, language: pt)
     def self.keywords(id, options = {})
       res = get("/movie/#{id}/keywords", query: options)
       res.success? ? res['keywords'] : bad_response(res)
@@ -102,7 +99,7 @@ module TMDb
     #
     # Examples
     #
-    # TMDb::Movie.trailers(68721, language: pt)
+    #   TMDb::Movie.trailers(68721, language: pt)
     def self.trailers(id, options = {})
       res = get("/movie/#{id}/trailers", query: options)
       res.success? ? res : bad_response(res)
@@ -112,7 +109,7 @@ module TMDb
     #
     # Examples
     #
-    # TMDb::Movie.releases(68721)
+    #   TMDb::Movie.releases(68721)
     def self.releases(id)
       res = get("/movie/#{id}/releases")
       res.success? ? res['countries'] : bad_response(res)
@@ -127,8 +124,8 @@ module TMDb
     #
     # Examples
     #
-    # TMDb::Movie.upcoming
-    # TMDb::Movie.upcoming(page: 3, language: 'pt')
+    #   TMDb::Movie.upcoming
+    #   TMDb::Movie.upcoming(page: 3, language: 'pt')
     def self.upcoming(options = {})
       res = get('/movie/upcoming', query: options)
 
