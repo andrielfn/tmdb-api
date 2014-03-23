@@ -1,6 +1,7 @@
 require 'tmdb-api'
 require 'rspec'
 require 'webmock/rspec'
+require 'pry'
 
 # Load all support files
 Dir[File.dirname(__FILE__) + "/support/**/*.rb"].each {|r| require r}
