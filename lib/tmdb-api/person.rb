@@ -2,9 +2,9 @@ module TMDb
   class Person < Base
     extend Searchable
 
-    # Person attributes
     ATTRIBUTES = :id, :adult, :also_known_as, :biography, :birthday, :deathday,
-                 :homepage, :name, :place_of_birth, :profile_path, :popularity, :imdb_id
+                 :homepage, :name, :place_of_birth, :profile_path, :popularity,
+                 :imdb_id, :known_for
 
     attr_reader *ATTRIBUTES
 

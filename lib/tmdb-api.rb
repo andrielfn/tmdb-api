@@ -14,6 +14,7 @@ require 'tmdb-api/production_country'
 require 'tmdb-api/spoken_language'
 require 'tmdb-api/changes'
 require 'tmdb-api/person'
+require 'tmdb-api/known_for'
 
 require 'tmdb-api/version'
 

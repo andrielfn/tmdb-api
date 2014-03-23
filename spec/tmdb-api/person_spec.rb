@@ -93,9 +93,17 @@ describe TMDb::Person do
 
       popular = TMDb::Person.popular
 
+      expect(popular.first.id).to eq(63)
       expect(popular.first.adult).to eq(false)
-      expect(popular.first.name).to eq('Daniel Craig')
-      expect(popular.first.profile_path).to eq('/wWMdqiqW6unT6TnXydQbOtYffeO.jpg')
+      expect(popular.first.name).to eq('Milla Jovovich')
+      expect(popular.first.popularity).to eq(24.8431766091385)
+      expect(popular.first.profile_path).to eq('/mcNgLarIVho7LheWcvd1oQ2tBOg.jpg')
+
+      known_for = popular.first.known_for.first
+      expect(known_for). to be_an_instance_of(TMDb::KnownFor)
+      expect(known_for.id).to eq(18)
+      expect(known_for.title).to eq('The Fifth Element')
+      expect(known_for.media_type).to eq('movie')
     end
 
     it 'raises with a bad request' do
