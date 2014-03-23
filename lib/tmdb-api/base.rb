@@ -25,7 +25,7 @@ module TMDb
     #
     # attributes - Attributes fetched from the API.
     def initialize(attributes = {})
-      load(attributes)
+      set_attributes(attributes)
     end
 
     private
@@ -36,7 +36,7 @@ module TMDb
     #              set in the object.
     #
     # Returns nothing
-    def load(attributes)
+    def set_attributes(attributes)
       attributes.each do |key, value|
         value = build_objects(key, value) if candidate_to_object?(value)
         self.instance_variable_set("@#{key}", value)
