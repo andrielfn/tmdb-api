@@ -7,14 +7,11 @@ describe TMDb::Changes do
 
       changes = TMDb::Changes.movies
 
-      expect(changes['results']).to have(100).items
-      expect(changes['total_results']).to eql(4645)
-      expect(changes['total_pages']).to eql(47)
-      expect(changes['page']).to eql(1)
-      expect(changes['results'].first).to eql({
-        'id' => 128149,
-        'adult' => false
-      })
+      expect(changes.changes).to have(100).items
+      expect(changes.total_results).to eql(4645)
+      expect(changes.total_pages).to eql(47)
+      expect(changes.page).to eql(1)
+      expect(changes.changes.first).to eql(128149)
     end
 
     it 'raises with a bad request' do
