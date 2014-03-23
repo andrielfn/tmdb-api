@@ -20,4 +20,24 @@ describe TMDb::Changes do
       expect { TMDb::Changes.movies }.to raise_error ArgumentError
     end
   end
+
+  describe '.people' do
+    it 'returns the changed people' do
+      stub_get('/person/changes').to_return(json_response('changes/people.json'))
+
+      changes = TMDb::Changes.people
+
+      expect(changes.changes).to have(100).items
+      expect(changes.total_results).to eql(555)
+      expect(changes.total_pages).to eql(6)
+      expect(changes.page).to eql(1)
+      expect(changes.changes.first).to eql(1303652)
+    end
+
+    it 'raises with a bad request' do
+      stub_get('/person/changes').to_return(status: 404)
+
+      expect { TMDb::Changes.people }.to raise_error ArgumentError
+    end
+  end
 end

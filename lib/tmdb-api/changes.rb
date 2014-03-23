@@ -22,6 +22,23 @@ module TMDb
       res.success? ? Changes.new(res) : bad_response(res)
     end
 
+    # Public: Get a list of people ids that have been edited. The rules of movie
+    # changes are also valid here.
+    #
+    # options - The hash options used to filter the search (default: {}).
+    #           :page - Page. Minimum 1, maximum 1000.
+    #           :start_date - Start date (YYYY-MM-DD).
+    #           :end_date - End date (YYYY-MM-DD).
+    #
+    # Examples
+    #
+    #   TMDb::Changes.people
+    #   TMDb::Changes.people(page: 3, start_date: '2013-03-23')
+    def self.people(options = {})
+      res = get('/person/changes', query: options)
+      res.success? ? Changes.new(res) : bad_response(res)
+    end
+
     private
 
     # Internal: sets the fetched result to the instance variables.
