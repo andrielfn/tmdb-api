@@ -48,7 +48,6 @@ module TMDb
     # Examples
     #
     # TMDb::Movie.cast(68721, language: pt)
-
     def self.cast(id, options = {})
       res = get("/movie/#{id}/credits", query: options)
       res.success? ? res['cast'] : bad_response(res)
