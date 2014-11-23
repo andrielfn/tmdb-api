@@ -7,7 +7,7 @@ describe TMDb::Changes do
 
       changes = TMDb::Changes.movies
 
-      expect(changes.changes).to have(100).items
+      expect(changes.changes.count).to eq(100)
       expect(changes.total_results).to eql(4645)
       expect(changes.total_pages).to eql(47)
       expect(changes.page).to eql(1)
@@ -27,7 +27,7 @@ describe TMDb::Changes do
 
       changes = TMDb::Changes.people
 
-      expect(changes.changes).to have(100).items
+      expect(changes.changes.count).to eq(100)
       expect(changes.total_results).to eql(555)
       expect(changes.total_pages).to eql(6)
       expect(changes.page).to eql(1)

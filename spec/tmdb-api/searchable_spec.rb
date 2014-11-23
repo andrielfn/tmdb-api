@@ -8,7 +8,7 @@ describe TMDb::Searchable do
 
       movies = TMDb::Movie.search("The Lord of the Rings")
 
-      expect(movies).to have(7).items
+      expect(movies.count).to eq(7)
 
       expect(movies.first.adult).to eq(false)
       expect(movies.first.backdrop_path).to eq("/pIUvQ9Ed35wlWhY2oU6OmwEsmzG.jpg")
@@ -28,7 +28,7 @@ describe TMDb::Searchable do
 
       people = TMDb::Person.search('Peter Jackson')
 
-      expect(people).to have(3).items
+      expect(people.count).to eq(3)
 
       expect(people.first.adult).to eq(false)
       expect(people.first.id).to eq(108)

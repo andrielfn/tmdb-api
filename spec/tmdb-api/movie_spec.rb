@@ -23,11 +23,11 @@ describe TMDb::Movie do
       )
       expect(movie.popularity).to eq(1.3497251049225558)
       expect(movie.poster_path).to eq('/mwDnSQR1CkxuDjSKfgiNT0sIOjM.jpg')
-      expect(movie.production_companies).to have(7).production_companies
+      expect(movie.production_companies.count).to eq(7)
       expect(movie.release_date).to eq('2002-08-31')
       expect(movie.revenue).to eq(27387381)
       expect(movie.runtime).to eq(130)
-      expect(movie.spoken_languages).to have(1).spoken_languages
+      expect(movie.spoken_languages.count).to eq(1)
       expect(movie.status).to eq('Released')
       expect(movie.tagline).to eq('If you run you\'re dead...if you stay, you\'re dead again. Period.')
       expect(movie.title).to eq('City of God')
@@ -37,7 +37,7 @@ describe TMDb::Movie do
       first_company = movie.production_companies.first
       expect(first_company.id).to eql(345)
       expect(first_company.name).to eql('O2 Filmes')
-      expect(movie.production_countries).to have(2).production_countries
+      expect(movie.production_countries.count).to eq(2)
 
       first_country = movie.production_countries.first
       expect(first_country.iso_3166_1).to eql('BR')
@@ -119,7 +119,7 @@ describe TMDb::Movie do
 
       cast = TMDb::Movie.cast(550)
 
-      expect(cast).to have(72).items
+      expect(cast.count).to eq(72)
 
       expect(cast.first).to eq(
         {
@@ -147,7 +147,7 @@ describe TMDb::Movie do
 
       crew = TMDb::Movie.crew(550)
 
-      expect(crew).to have(14).items
+      expect(crew.count).to eq(14)
 
       expect(crew.first).to eq(
         {
@@ -174,8 +174,8 @@ describe TMDb::Movie do
 
       images = TMDb::Movie.images(598)
 
-      expect(images['backdrops']).to have(7).items
-      expect(images['posters']).to have(16).items
+      expect(images['backdrops'].count).to eq(7)
+      expect(images['posters'].count).to eq(16)
 
       expect(images['backdrops'].first).to eq(
         {
@@ -215,7 +215,7 @@ describe TMDb::Movie do
 
       keywords = TMDb::Movie.keywords(598)
 
-      expect(keywords).to have(7).items
+      expect(keywords.count).to eq(7)
 
       expect(keywords).to match_array([
         {
@@ -285,7 +285,7 @@ describe TMDb::Movie do
 
       releases = TMDb::Movie.releases(598)
 
-      expect(releases).to have(6).items
+      expect(releases.count).to eq(6)
 
       expect(releases).to match_array([
         {
@@ -334,7 +334,7 @@ describe TMDb::Movie do
 
       upcoming = TMDb::Movie.upcoming
 
-      expect(upcoming).to have(20).movies
+      expect(upcoming.count).to eq(20)
       expect(upcoming.first.id).to eql(68726)
       expect(upcoming.first.title).to eql('Pacific Rim')
     end
