@@ -4,9 +4,3 @@ rvm:
 - 2.1.5
 - 2.0.0
 - 1.9.3
-notifications:
-  email: false
-  campfire:
-    rooms:
-      - secure: VkO6I3V//FGfYngmANVEdTGRMeRDPwivLopNZJyeSRHE25XMhDrB0HWZfQF0OI6qtziVjyYOXGF+sPAHfYJcUvCNyw4I+7JA5/veZ/lEgv/6NZq1t8DdPfhoDs+cYhg0DYa1czsVbRDzCtub+nQ8LxewSZGO3zd2W+uVBJ0VPzs=
-
