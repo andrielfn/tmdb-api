@@ -1,6 +1,9 @@
 {
 	"adult": false,
 	"also_known_as": [],
+	"oscar_awards": [
+	  { "movie": "Harry Potter and the Order of the Phoenix" }
+	],
 	"biography": "Sir Ian Murray McKellen is an English actor. He has received a Tony Award and two Academy Award nominations. His work has spanned genres from Shakespearean and modern theatre to popular fantasy and science fiction. He is known to many for roles such as Gandalf in the Lord of the Rings film trilogy and as Magneto in the X-Men films.  In 1988, McKellen came out and announced he was gay. He became a founding member of Stonewall, one of the United Kingdom's most influential LGBT rights groups, of which he remains a prominent spokesman.  He was made a Commander of the Order of the British Empire (CBE) in 1979, and knighted in the 1991 New Year Honours for his outstanding work and contributions to theatre. In the 2008 New Year Honours he was made a Companion of Honour (CH) for services to drama and to equality.",
 	"birthday": "1939-05-25",
 	"deathday": "",

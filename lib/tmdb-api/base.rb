@@ -38,7 +38,10 @@ module TMDb
     # Returns nothing
     def set_attributes(attributes)
       attributes.each do |key, value|
-        value = build_objects(key, value) if candidate_to_object?(value)
+        if candidate_to_object?(value)
+          next unless TMDb.const_defined?(key.classify)
+          value = build_objects(key, value)
+        end
         self.instance_variable_set("@#{key}", value)
       end
     end
