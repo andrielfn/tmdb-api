@@ -49,7 +49,7 @@ module TMDb
     #
     # Returns true or false
     def candidate_to_object?(value)
-      value.is_a?(Array) && value.all? { |h| h.is_a?(Hash) }
+      value.is_a?(Array) && !value.empty? && value.all? { |h| h.is_a?(Hash) }
     end
 
     # Internal: Builds objects for the nested resources from API.

@@ -10,11 +10,7 @@ describe TMDb::Person do
 
     it 'returns a TMDb::Person object with the filled attributes' do
       expect(person.adult).to eq(false)
-      expect(person.also_known_as).to match_array([
-        'Sir Ian McKellan',
-        'Sir Ian McKellen',
-        'Ian Murray McKellen'
-      ])
+      expect(person.also_known_as).to match_array([])
       expect(person.biography).to start_with("Sir Ian Murray McKellen is an English actor.")
       expect(person.birthday).to eq(Date.parse('1939-05-25'))
       expect(person.deathday).to eq(nil)
