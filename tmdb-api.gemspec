@@ -8,8 +8,12 @@ Gem::Specification.new do |spec|
   spec.version       = TMDb::VERSION
   spec.authors       = ["Andriel Nuernberg"]
   spec.email         = ["andrielfn@gmail.com"]
-  spec.description   = "The Movie Database API v3"
   spec.summary       = "The Movie Database API v3"
+  spec.description = <<-EOF
+    This gem is a Ruby wrapper of the The Movie Database API v3.
+    The original API documentation is available at
+    http://docs.themoviedb.apiary.io.
+  EOF
   spec.homepage      = "https://github.com/andrielfn/tmdb-api"
   spec.license       = "MIT"
 
